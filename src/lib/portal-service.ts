@@ -1,8 +1,8 @@
-import { supabaseAdmin, supabasePublic } from './supabase';
+import { supabaseAdmin } from './supabase';
 import type { PortalSettings, PortalAd, PortalArticle, PortalPage } from '../types/portal';
 
 export async function getPortalSettings(): Promise<PortalSettings> {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_settings')
     .select('*')
     .eq('id', 1)
@@ -30,7 +30,7 @@ export async function getPortalSettings(): Promise<PortalSettings> {
 }
 
 export async function getPortalAds(): Promise<PortalAd[]> {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_ads')
     .select('*')
     .order('ad_key', { ascending: true });
@@ -40,7 +40,7 @@ export async function getPortalAds(): Promise<PortalAd[]> {
 }
 
 export async function getPublishedArticles(): Promise<PortalArticle[]> {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_articles')
     .select('*')
     .eq('is_published', true)
@@ -51,7 +51,7 @@ export async function getPublishedArticles(): Promise<PortalArticle[]> {
 }
 
 export async function getArticleBySlug(slug: string): Promise<PortalArticle | null> {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_articles')
     .select('*')
     .eq('slug', slug)
@@ -70,7 +70,7 @@ export async function incrementArticleViews(slug: string): Promise<void> {
 }
 
 export async function getPortalPage(slug: string): Promise<PortalPage | null> {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_pages')
     .select('*')
     .eq('slug', slug)

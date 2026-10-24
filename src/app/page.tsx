@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getPublishedArticles, getPortalAds } from '@/lib/portal-service';
 import AdRenderer from '@/components/AdRenderer';
 
-export const revalidate = 60; // ISR cache revalidation every 60 seconds
+export const revalidate = 0; // Real-time dynamic rendering
 
 export default async function HomePage() {
   const articles = await getPublishedArticles();
