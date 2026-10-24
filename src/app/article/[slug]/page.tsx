@@ -4,6 +4,9 @@ import type { Metadata } from 'next';
 import { getArticleBySlug, getPublishedArticles, getPortalAds, incrementArticleViews } from '@/lib/portal-service';
 import AdRenderer from '@/components/AdRenderer';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface ArticlePageProps {
   params: Promise<{
     slug: string;
