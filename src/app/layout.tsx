@@ -34,11 +34,38 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth dark">
       <head>
+        {/* Tailwind CDN Guarantee */}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                  extend: {
+                    colors: {
+                      brand: {
+                        50: '#eef2ff',
+                        100: '#e0e7ff',
+                        500: '#6366f1',
+                        600: '#4f46e5',
+                        700: '#4338ca',
+                        900: '#1e1b4b'
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          }}
+        />
         {settings.custom_head_scripts && (
-          <div dangerouslySetInnerHTML={{ __html: settings.custom_head_scripts }} />
+          <script
+            dangerouslySetInnerHTML={{ __html: settings.custom_head_scripts }}
+          />
         )}
       </head>
-      <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased">
+      <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-indigo-600 selection:text-white">
         {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}
         <AdRenderer ads={ads} slot="global" />
 
