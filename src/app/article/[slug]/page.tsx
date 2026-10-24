@@ -5,7 +5,13 @@ import { getArticleBySlug, getPublishedArticles, getPortalAds, incrementArticleV
 import AdRenderer from '@/components/AdRenderer';
 
 export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 export const revalidate = 0;
+
+export async function generateStaticParams() {
+  const articles = await getPublishedArticles();
+  return articles.map((a) => ({ slug: a.slug }));
+}
 
 interface ArticlePageProps {
   params: Promise<{
