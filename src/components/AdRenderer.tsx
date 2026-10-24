@@ -94,7 +94,9 @@ export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
             </p>
             <div className="pt-2">
               <a
-                href="/gateway"
+                href={contentAd.smartlink_url || '/gateway'}
+                target={contentAd.smartlink_url ? '_blank' : '_self'}
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 rounded bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold shadow-sm transition"
               >
                 Access Research Sandbox &rarr;

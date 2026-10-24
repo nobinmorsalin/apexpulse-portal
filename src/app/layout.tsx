@@ -58,13 +58,14 @@ export default async function RootLayout({
           }}
         />
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
         {/* Automated Monetag Ad Engine with Frequency Capping & Cooldown Controller */}
         <MonetagEngine
           ads={ads}
           customHeadScripts={settings.custom_head_scripts}
-          cooldownMinutes={settings.ad_cooldown_minutes || 15}
+          cooldownMinutes={settings.ad_cooldown_minutes || 3}
         />
 
         <Navbar settings={settings} />

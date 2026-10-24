@@ -13,7 +13,7 @@ interface MonetagEngineProps {
 export default function MonetagEngine({
   ads,
   customHeadScripts,
-  cooldownMinutes = 15,
+  cooldownMinutes = 3,
 }: MonetagEngineProps) {
   const pathname = usePathname();
   const clickHandlerAttached = useRef(false);
@@ -28,9 +28,9 @@ export default function MonetagEngine({
     }
 
     // 2. SMART AD FREQUENCY CAPPING & COOLDOWN CONTROLLER
-    // Prevent aggressive ad spamming: allow visitors to browse smoothly
+    // Prevent aggressive ad spamming: 3 minutes cooldown between ad triggers
     const COOLDOWN_KEY = 'apexpulse_ad_cooldown_expiry';
-    const cooldownMs = (cooldownMinutes || 15) * 60 * 1000;
+    const cooldownMs = (cooldownMinutes || 3) * 60 * 1000;
 
     const isCoolingDown = () => {
       try {
