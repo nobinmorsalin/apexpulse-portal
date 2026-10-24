@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import type { PortalAd } from '@/types/portal';
 
 interface MonetagEngineProps {
@@ -9,10 +10,38 @@ interface MonetagEngineProps {
 }
 
 export default function MonetagEngine({ ads, customHeadScripts }: MonetagEngineProps) {
+  const pathname = usePathname();
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Execute any custom head scripts provided in Admin Settings
+    // STRICT ADMIN ISOLATION:
+    // Never execute ad scripts, popunders, or push prompts on any admin route
+    if (pathname && pathname.startsWith('/admin')) {
+      return;
+    }
+
+    // 1. Inject the Official Monetag MultiTag (Wonderful tag: Popunder, Vignette, In-Page Push, Push)
+    // ONLY executed for public visitors
+    const multiTagId = 'monetag-multitag-official';
+    if (!document.getElementById(multiTagId)) {
+      const multiScript = document.createElement('script');
+      multiScript.id = multiTagId;
+      multiScript.src = 'https://quge5.com/88/tag.min.js';
+      multiScript.setAttribute('data-zone', '301441');
+      multiScript.setAttribute('data-cfasync', 'false');
+      multiScript.async = true;
+      document.head.appendChild(multiScript);
+    }
+
+    // 2. Service Worker Registration for Push Notifications (Public visitors only)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .catch(() => {});
+    }
+
+    // 3. Execute any custom head scripts provided in Admin Settings (Public visitors only)
     if (customHeadScripts && customHeadScripts.trim() !== '') {
       const container = document.createElement('div');
       container.innerHTML = customHeadScripts;
@@ -28,52 +57,9 @@ export default function MonetagEngine({ ads, customHeadScripts }: MonetagEngineP
       });
     }
 
-    // 1. Service Worker Registration for Push Notifications
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .catch(() => {
-          // Silent catch if SW registration is restricted
-        });
-    }
-
-    // Helper to inject an ad script with an Anti-AdBlock fallback
-    const injectZoneTag = (zoneId: string, formatName: string) => {
-      const scriptId = `monetag-tag-${zoneId}`;
-      if (document.getElementById(scriptId)) return;
-
-      const script = document.createElement('script');
-      script.id = scriptId;
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
-      script.setAttribute('data-zone', zoneId);
-
-      // Primary source: verified Monetag CDN
-      script.src = `https://5gvci.com/pfe/current/tag.min.js?z=${zoneId}`;
-
-      // Anti-Adblock Fallback: if third-party CDN is blocked by browser extensions,
-      // route via our first-party internal proxy on apexpulse-portal.vercel.app
-      script.onerror = () => {
-        const fallbackScript = document.createElement('script');
-        fallbackScript.id = `monetag-fallback-${zoneId}`;
-        fallbackScript.async = true;
-        fallbackScript.setAttribute('data-cfasync', 'false');
-        fallbackScript.setAttribute('data-zone', zoneId);
-        fallbackScript.src = `/api/ad-proxy?z=${zoneId}`;
-        document.head.appendChild(fallbackScript);
-      };
-
-      document.head.appendChild(script);
-    };
-
-    // 2. Iterate through configured active ads and inject zone scripts
+    // 4. Iterate through configured active ads and inject zone scripts (Public visitors only)
     ads.forEach((ad) => {
       if (!ad.is_active) return;
-
-      // If zone ID is present, inject tag
-      if (ad.zone_id && ad.zone_id.trim() !== '') {
-        injectZoneTag(ad.zone_id.trim(), ad.name);
-      }
 
       // If custom script URL is present, inject it
       if (ad.script_url && !document.querySelector(`script[src="${ad.script_url}"]`)) {
@@ -103,7 +89,7 @@ export default function MonetagEngine({ ads, customHeadScripts }: MonetagEngineP
         document.body.appendChild(wrapper);
       }
     });
-  }, [ads]);
+  }, [pathname, ads, customHeadScripts]);
 
   return null;
 }

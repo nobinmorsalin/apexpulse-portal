@@ -35,14 +35,6 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth bg-slate-50 text-slate-900">
       <head>
-        {/* Official Monetag MultiTag (Wonderful tag: Popunder, Vignette, In-Page Push, Push) */}
-        <script
-          src="https://quge5.com/88/tag.min.js"
-          data-zone="301441"
-          async
-          data-cfasync="false"
-        />
-
         {/* Tailwind CDN */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
@@ -68,7 +60,7 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
       </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
-        {/* Automated Monetag Ad Engine & Anti-Adblock Script Delivery */}
+        {/* Automated Monetag Ad Engine (Strictly isolated from Admin routes) */}
         <MonetagEngine ads={ads} customHeadScripts={settings.custom_head_scripts} />
 
         {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}

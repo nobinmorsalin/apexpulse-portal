@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { supabasePublic } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 import { getPortalSettings, getPortalAds } from '@/lib/portal-service';
 
 export const revalidate = 0; // Dynamic admin dashboard
@@ -8,11 +8,11 @@ export default async function AdminDashboardPage() {
   const settings = await getPortalSettings();
   const ads = await getPortalAds();
 
-  const { count: articleCount } = await supabasePublic
+  const { count: articleCount } = await supabaseAdmin
     .from('portal_articles')
     .select('*', { count: 'exact', head: true });
 
-  const { data: viewsData } = await supabasePublic
+  const { data: viewsData } = await supabaseAdmin
     .from('portal_articles')
     .select('views_count');
 
@@ -63,9 +63,9 @@ export default async function AdminDashboardPage() {
         </div>
 
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
-          <div className="text-xs text-slate-400 font-medium">Domain Health</div>
-          <div className="text-3xl font-extrabold text-emerald-400">100%</div>
-          <div className="text-[11px] text-slate-400">SSL & Schema Validated</div>
+          <div className="text-xs text-slate-400 font-medium">Database Node</div>
+          <div className="text-3xl font-extrabold text-emerald-400">ONLINE</div>
+          <div className="text-[11px] text-slate-400">PostgreSQL Cloud Cluster</div>
         </div>
       </div>
 

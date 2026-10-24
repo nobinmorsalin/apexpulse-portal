@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import type { PortalAd } from '../types/portal';
 
 interface AdRendererProps {
@@ -9,9 +10,14 @@ interface AdRendererProps {
 }
 
 export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
+  const pathname = usePathname();
+
+  // Strictly block any ad rendering on admin pages
+  const isAdmin = pathname && pathname.startsWith('/admin');
+
   useEffect(() => {
     // Only execute global ad scripts (popunder, in_page_push, vignette) once
-    if (slot !== 'global') return;
+    if (isAdmin || slot !== 'global') return;
 
     ads.forEach((ad) => {
       if (!ad.is_active) return;
@@ -49,6 +55,8 @@ export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
       }
     });
   }, [ads, slot]);
+
+  if (isAdmin) return null;
 
   // Handle in-content or banner slots
   if (slot === 'header') {

@@ -17,7 +17,7 @@ export default async function AdminLayout({
         <aside className="w-full md:w-64 bg-slate-900 border-r border-slate-800 p-6 flex flex-col justify-between">
           <div className="space-y-6">
             <div className="space-y-2">
-              <Logo size="sm" />
+              <Logo size="sm" darkVariant={true} />
               <div className="text-[10px] font-mono uppercase tracking-widest text-indigo-400 bg-indigo-950/80 border border-indigo-800/40 px-2 py-0.5 rounded inline-block">
                 Admin Control Desk
               </div>
