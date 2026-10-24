@@ -25,12 +25,27 @@ export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
         document.head.appendChild(s);
       }
 
-      // Handle raw code snippets
-      if (ad.code_snippet && !document.getElementById(`ad-snippet-${ad.ad_key}`)) {
-        const container = document.createElement('div');
-        container.id = `ad-snippet-${ad.ad_key}`;
-        container.innerHTML = ad.code_snippet;
-        document.body.appendChild(container);
+      // Handle raw code snippets (Monetag HTML/Script tags)
+      if (ad.code_snippet && !document.getElementById(`ad-container-${ad.ad_key}`)) {
+        const wrapper = document.createElement('div');
+        wrapper.id = `ad-container-${ad.ad_key}`;
+        wrapper.innerHTML = ad.code_snippet;
+
+        // Browsers do not automatically run scripts injected via innerHTML.
+        // We extract each <script> tag and create active DOM script nodes.
+        const scriptElements = wrapper.querySelectorAll('script');
+        scriptElements.forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attr) => {
+            newScript.setAttribute(attr.name, attr.value);
+          });
+          if (oldScript.textContent) {
+            newScript.textContent = oldScript.textContent;
+          }
+          document.head.appendChild(newScript);
+        });
+
+        document.body.appendChild(wrapper);
       }
     });
   }, [ads, slot]);
