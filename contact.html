@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Editorial Desk | ApexPulse Global</title>
+  <meta name="description" content="Contact the editorial board and compliance department at ApexPulse Global.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 py-4">
+    <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 font-bold text-lg text-white">
+        <div class="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center font-black text-xs text-white">AP</div>
+        <span>ApexPulse<span class="text-indigo-500">Global</span></span>
+      </a>
+      <a href="index.html" class="text-xs text-indigo-400 hover:text-indigo-300">Back to Home &rarr;</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
+    <div class="border-b border-slate-800 pb-6">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Contact Editorial Desk</h1>
+      <p class="text-xs text-slate-400 mt-2">Inquiries, corrections, and syndicate partnership requests</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="space-y-6 text-sm text-slate-300">
+        <div>
+          <h2 class="text-base font-bold text-white mb-1">Corporate Inquiries</h2>
+          <p class="text-xs text-slate-400">ApexPulse Global Media Group</p>
+          <p class="text-xs text-slate-400">Email: editorial@apexpulse.top</p>
+          <p class="text-xs text-slate-400">Compliance: privacy@apexpulse.top</p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-white mb-1">Syndicate Partnerships</h2>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            For programmatic advertising inquiries, direct sponsorship placements, and content licensing agreements, our digital desk operates 24/7.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs text-slate-400 space-y-2">
+          <div class="font-semibold text-white">Editorial Office Response Time</div>
+          <p>Standard inquiries are acknowledged within 24 business hours.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form Mockup -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
+        <h3 class="text-sm font-bold text-white">Send Direct Message</h3>
+        <form onsubmit="event.preventDefault(); alert('Inquiry received. Our desk will contact you within 24 business hours.');" class="space-y-3">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Full Name</label>
+            <input type="text" required placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Corporate Email</label>
+            <input type="email" required placeholder="john@enterprise.com" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Subject</label>
+            <input type="text" required placeholder="Syndication inquiry" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Message</label>
+            <textarea required rows="4" placeholder="Brief outline of your inquiry..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"></textarea>
+          </div>
+          <button type="submit" class="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-md transition">
+            Submit Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-400">
+    <p>&copy; 2026 ApexPulse Global. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
