@@ -35,6 +35,14 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth bg-slate-50 text-slate-900">
       <head>
+        {/* Official Monetag MultiTag (Wonderful tag: Popunder, Vignette, In-Page Push, Push) */}
+        <script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="301441"
+          async
+          data-cfasync="false"
+        />
+
         {/* Tailwind CDN */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
