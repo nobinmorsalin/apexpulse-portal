@@ -61,7 +61,7 @@ export default async function RootLayout({
       </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
         {/* Automated Monetag Ad Engine & Anti-Adblock Script Delivery */}
-        <MonetagEngine ads={ads} />
+        <MonetagEngine ads={ads} customHeadScripts={settings.custom_head_scripts} />
 
         {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}
         <AdRenderer ads={ads} slot="global" />

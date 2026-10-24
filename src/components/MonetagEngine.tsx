@@ -5,11 +5,28 @@ import type { PortalAd } from '@/types/portal';
 
 interface MonetagEngineProps {
   ads: PortalAd[];
+  customHeadScripts?: string;
 }
 
-export default function MonetagEngine({ ads }: MonetagEngineProps) {
+export default function MonetagEngine({ ads, customHeadScripts }: MonetagEngineProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
+    // Execute any custom head scripts provided in Admin Settings
+    if (customHeadScripts && customHeadScripts.trim() !== '') {
+      const container = document.createElement('div');
+      container.innerHTML = customHeadScripts;
+      container.querySelectorAll('script').forEach((oldScript) => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach((attr) => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        if (oldScript.textContent) {
+          newScript.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(newScript);
+      });
+    }
 
     // 1. Service Worker Registration for Push Notifications
     if ('serviceWorker' in navigator) {
