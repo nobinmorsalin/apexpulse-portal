@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logo from './Logo';
 import type { PortalSettings } from '../types/portal';
 
 interface FooterProps {
@@ -11,10 +12,7 @@ export default function Footer({ settings }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
           <div className="space-y-3">
-            <div className="flex items-center gap-2 font-bold text-white text-base">
-              <div className="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-xs font-black">AP</div>
-              <span>{settings.site_name || 'ApexPulse Global'}</span>
-            </div>
+            <Logo size="sm" showTagline={true} />
             <p className="text-slate-400 text-xs leading-relaxed">
               {settings.site_description || 'Independent global research publication reporting on emerging computing architectures, automated systems, and enterprise technology.'}
             </p>
@@ -52,7 +50,6 @@ export default function Footer({ settings }: FooterProps) {
             <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
             <Link href="/terms" className="hover:text-white transition">Terms</Link>
             <Link href="/contact" className="hover:text-white transition">Contact</Link>
-            <Link href="/admin" className="text-slate-600 hover:text-slate-400 transition">Portal Admin</Link>
           </div>
         </div>
       </div>
