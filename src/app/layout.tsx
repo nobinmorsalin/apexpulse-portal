@@ -60,11 +60,12 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
       </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
-        {/* Automated Monetag Ad Engine (Strictly isolated from Admin routes) */}
-        <MonetagEngine ads={ads} customHeadScripts={settings.custom_head_scripts} />
-
-        {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}
-        <AdRenderer ads={ads} slot="global" />
+        {/* Automated Monetag Ad Engine with Frequency Capping & Cooldown Controller */}
+        <MonetagEngine
+          ads={ads}
+          customHeadScripts={settings.custom_head_scripts}
+          cooldownMinutes={settings.ad_cooldown_minutes || 15}
+        />
 
         <Navbar settings={settings} />
 

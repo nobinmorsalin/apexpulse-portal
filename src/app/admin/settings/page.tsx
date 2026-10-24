@@ -152,6 +152,23 @@ export default function AdminSettingsPage() {
                 className="w-full bg-slate-950 border border-cyan-900/60 rounded-lg px-3 py-2 text-cyan-300 font-mono focus:outline-none focus:border-cyan-500"
               />
             </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-emerald-400 font-semibold mb-1">
+                Ad Click Cooldown / Frequency Capping (Minutes)
+              </label>
+              <p className="text-[11px] text-slate-400 mb-1">
+                Once an ad pops up or redirects, how many minutes must pass before another ad can trigger? (Recommended: 15 minutes to let readers browse peacefully without ad spam).
+              </p>
+              <input
+                type="number"
+                min="1"
+                max="1440"
+                value={settings.ad_cooldown_minutes ?? 15}
+                onChange={(e) => setSettings({ ...settings, ad_cooldown_minutes: parseInt(e.target.value, 10) || 15 })}
+                className="w-full md:w-48 bg-slate-950 border border-emerald-900/60 rounded-lg px-3 py-2 text-emerald-300 font-mono focus:outline-none focus:border-emerald-500"
+              />
+            </div>
           </div>
         </div>
 

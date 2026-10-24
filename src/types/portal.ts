@@ -11,6 +11,7 @@ export interface PortalSettings {
   google_verification_meta: string;
   custom_head_scripts: string;
   custom_footer_scripts: string;
+  ad_cooldown_minutes?: number;
   created_at: string;
   updated_at: string;
 }

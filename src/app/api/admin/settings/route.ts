@@ -30,6 +30,7 @@ export async function PUT(req: Request) {
       google_verification_meta,
       custom_head_scripts,
       custom_footer_scripts,
+      ad_cooldown_minutes,
     } = body;
 
     const { error } = await supabaseAdmin
@@ -46,6 +47,7 @@ export async function PUT(req: Request) {
         google_verification_meta,
         custom_head_scripts,
         custom_footer_scripts,
+        ad_cooldown_minutes: Number(ad_cooldown_minutes) || 15,
         updated_at: new Date().toISOString(),
       })
       .eq('id', 1);
