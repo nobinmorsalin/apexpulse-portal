@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin, supabasePublic } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
-  const { data, error } = await supabasePublic
+  const { data, error } = await supabaseAdmin
     .from('portal_articles')
     .select('*')
     .order('created_at', { ascending: false });
@@ -29,7 +32,7 @@ export async function POST(req: Request) {
           reading_time: reading_time || '5 min read',
           is_published: is_published ?? true,
           is_featured: is_featured ?? false,
-          views_count: Math.floor(Math.random() * 80) + 120,
+          views_count: 0,
         },
       ])
       .select()

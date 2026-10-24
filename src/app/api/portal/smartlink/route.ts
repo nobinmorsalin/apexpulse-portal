@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
-import { supabasePublic } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
-  const { data } = await supabasePublic
+  const { data } = await supabaseAdmin
     .from('portal_ads')
     .select('smartlink_url, is_active')
     .eq('ad_key', 'smartlink')
