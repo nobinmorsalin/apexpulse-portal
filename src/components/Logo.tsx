@@ -1,13 +1,14 @@
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   showTagline?: boolean;
+  lightBackground?: boolean;
 }
 
 export default function Logo({ size = 'md', showTagline = false }: LogoProps) {
   const iconSizes = {
-    sm: 'w-7 h-7 text-xs',
-    md: 'w-9 h-9 text-sm',
-    lg: 'w-12 h-12 text-base',
+    sm: 'w-7 h-7',
+    md: 'w-9 h-9',
+    lg: 'w-12 h-12',
   };
 
   const textSizes = {
@@ -17,31 +18,46 @@ export default function Logo({ size = 'md', showTagline = false }: LogoProps) {
   };
 
   return (
-    <div className="flex items-center gap-2.5 group">
-      {/* Sleek SVG Hexagonal Pulse Tech Node */}
-      <div className={`relative ${iconSizes[size]} rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-[1.5px] shadow-lg shadow-indigo-500/20 flex-shrink-0 transition-transform group-hover:scale-105`}>
-        <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center relative overflow-hidden">
+    <div className="flex items-center gap-3 group select-none">
+      {/* Prestigious Academic Shield / Crest Emblem */}
+      <div className={`relative ${iconSizes[size]} rounded-lg bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 p-[1px] shadow-sm flex-shrink-0 transition-transform group-hover:scale-105`}>
+        <div className="w-full h-full bg-slate-900 rounded-[7px] flex items-center justify-center p-1.5">
           <svg
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-1/2 h-1/2 text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]"
+            className="w-full h-full text-indigo-300"
           >
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            {/* Academic Shield & Open Book / Compass Crest */}
+            <path
+              d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-indigo-400"
+            />
+            <path
+              d="M12 8v8M8 12h8"
+              stroke="#38bdf8"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
       </div>
 
       <div className="flex flex-col">
-        <span className={`font-black tracking-tight text-white ${textSizes[size]} leading-none`}>
-          ApexPulse<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Global</span>
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className={`font-serif font-black tracking-tight text-slate-900 ${textSizes[size]} leading-none`}>
+            ApexPulse
+          </span>
+          <span className="font-sans font-bold text-xs uppercase tracking-widest px-1.5 py-0.5 rounded bg-blue-50 text-blue-900 border border-blue-200">
+            Institute
+          </span>
+        </div>
         {showTagline && (
-          <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase mt-0.5">
-            Digital Intelligence Network
+          <span className="text-[10px] font-sans tracking-widest text-slate-500 uppercase mt-0.5 font-medium">
+            Global Educational & Technology Review
           </span>
         )}
       </div>

@@ -9,7 +9,6 @@ export default function GatewayPage() {
   const [smartLinkUrl, setSmartLinkUrl] = useState('/#articles');
 
   useEffect(() => {
-    // Fetch active smartlink from API or config
     fetch('/api/portal/smartlink')
       .then((res) => res.json())
       .then((data) => {
@@ -33,37 +32,37 @@ export default function GatewayPage() {
 
   return (
     <div className="max-w-xl mx-auto px-4 py-16 text-center w-full">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
 
         {/* Status Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950/80 border border-indigo-700/60 text-indigo-300">
-          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
-          <span>Automated Session Handshake</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 border border-blue-200 text-blue-900">
+          <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+          <span>Institutional Verification Protocol</span>
         </div>
 
         {/* Title */}
         <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Verifying Digital Session Credentials
+          <h1 className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
+            Authenticating Laboratory Credentials
           </h1>
-          <p className="text-slate-400 text-xs sm:text-sm">
+          <p className="text-slate-600 text-xs sm:text-sm">
             Please wait while our verification cluster authenticates your connection token and prepares your destination resources.
           </p>
         </div>
 
         {/* Verification Matrix Box */}
-        <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 text-left font-mono text-xs space-y-2.5">
-          <div className="flex items-center justify-between text-slate-400">
-            <span>[1/3] Proxy & Network Integrity</span>
-            <span className="text-emerald-400 font-semibold">VALIDATED</span>
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left font-mono text-xs space-y-2.5">
+          <div className="flex items-center justify-between text-slate-600">
+            <span>[1/3] Network Routing & SSL Handshake</span>
+            <span className="text-emerald-700 font-bold">VALIDATED</span>
           </div>
-          <div className="flex items-center justify-between text-slate-400">
-            <span>[2/3] Security Handshake Token</span>
-            <span className="text-emerald-400 font-semibold">CONFIRMED</span>
+          <div className="flex items-center justify-between text-slate-600">
+            <span>[2/3] Institutional Token Signature</span>
+            <span className="text-emerald-700 font-bold">CONFIRMED</span>
           </div>
-          <div className="flex items-center justify-between text-slate-400">
-            <span>[3/3] Dynamic Content Bridge</span>
-            <span className={isUnlocked ? 'text-emerald-400 font-semibold' : 'text-amber-400 font-semibold'}>
+          <div className="flex items-center justify-between text-slate-600">
+            <span>[3/3] Laboratory Resource Bridge</span>
+            <span className={isUnlocked ? 'text-emerald-700 font-bold' : 'text-blue-900 font-bold animate-pulse'}>
               {isUnlocked ? 'READY' : 'SYNCHRONIZING...'}
             </span>
           </div>
@@ -71,15 +70,15 @@ export default function GatewayPage() {
 
         {/* Dynamic Progress Bar */}
         <div className="space-y-2">
-          <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
             <div
-              className="bg-gradient-to-r from-indigo-500 to-cyan-400 h-full transition-all duration-300 ease-out"
+              className="bg-gradient-to-r from-blue-900 to-indigo-600 h-full transition-all duration-300 ease-out"
               style={{ width: `${((3 - seconds) / 3) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between text-[11px] text-slate-400">
-            <span>Authentication cluster response:</span>
-            <span className={`font-semibold ${isUnlocked ? 'text-emerald-400' : 'text-white'}`}>
+          <div className="flex justify-between text-[11px] text-slate-500 font-mono">
+            <span>Distribution cluster response:</span>
+            <span className={`font-bold ${isUnlocked ? 'text-emerald-700' : 'text-slate-900'}`}>
               {isUnlocked ? 'Session Verified!' : `${seconds}s remaining`}
             </span>
           </div>
@@ -92,36 +91,36 @@ export default function GatewayPage() {
               href={smartLinkUrl}
               target={smartLinkUrl.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-sm shadow-xl shadow-indigo-600/40 transition cursor-pointer"
+              className="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition cursor-pointer"
             >
               Click Here to Claim Access & Continue &rarr;
             </a>
-            <p className="text-[11px] text-slate-400 mt-2">
-              Clicking connects directly to our verified high-priority partner node.
+            <p className="text-[11px] text-slate-500 mt-2">
+              Connecting directly to our authenticated partner repository node.
             </p>
           </div>
         ) : (
           <div className="pt-2">
             <button
               disabled
-              className="w-full py-3.5 rounded-xl bg-slate-800 text-slate-500 text-xs font-semibold cursor-not-allowed"
+              className="w-full py-3.5 rounded-xl bg-slate-100 text-slate-400 text-xs font-bold cursor-not-allowed border border-slate-200"
             >
-              Validating session tokens ({seconds}s)...
+              Authenticating session tokens ({seconds}s)...
             </button>
           </div>
         )}
 
         {/* Security Footer Info */}
-        <div className="pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 space-y-1">
+        <div className="pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
           <p>TLS 1.3 Certified Encrypted Stream</p>
-          <p>Session ID: <span className="font-mono text-slate-400">APG-TOKEN-AUTHSYNC-OK</span></p>
+          <p>Session ID: <span className="font-mono text-slate-700 font-semibold">APG-ACADEMIC-AUTH-OK</span></p>
         </div>
 
       </div>
 
       <div className="mt-8 text-center">
-        <Link href="/" className="text-xs text-slate-400 hover:text-indigo-400 transition">
-          &larr; Return to ApexPulse Global Homepage
+        <Link href="/" className="text-xs text-blue-900 font-bold hover:underline transition">
+          &larr; Return to ApexPulse Institute Publications
         </Link>
       </div>
     </div>

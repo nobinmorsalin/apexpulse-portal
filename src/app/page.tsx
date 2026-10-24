@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { getPublishedArticles, getPortalAds } from '@/lib/portal-service';
+import ArticleExplorer from '@/components/ArticleExplorer';
 import AdRenderer from '@/components/AdRenderer';
 
-export const revalidate = 0; // Real-time dynamic rendering
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function HomePage() {
   const articles = await getPublishedArticles();
@@ -11,66 +13,71 @@ export default async function HomePage() {
   const smartLinkUrl = smartLinkAd?.smartlink_url || '/gateway';
 
   const featuredArticle = articles.find((a) => a.is_featured) || articles[0];
-  const standardArticles = articles.filter((a) => a.id !== featuredArticle?.id);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
 
-      {/* Hero Featured Story */}
+      {/* Featured Lead Research Paper */}
       {featuredArticle && (
-        <section className="bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+        <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950 border border-indigo-700/60 text-indigo-300">
-                <span>Featured Whitepaper</span>
+            <div className="lg:col-span-8 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 border border-blue-200 text-blue-900">
+                <span>Featured Academic Whitepaper</span>
                 <span>&bull;</span>
                 <span>{featuredArticle.category}</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                <Link href={`/article/${featuredArticle.slug}`} className="hover:text-indigo-400 transition">
+
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tight leading-tight">
+                <Link href={`/article/${featuredArticle.slug}`} className="hover:text-blue-900 transition">
                   {featuredArticle.title}
                 </Link>
               </h1>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 {featuredArticle.excerpt}
               </p>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+
+              <div className="flex flex-wrap items-center gap-5 pt-3">
                 <Link
                   href={`/article/${featuredArticle.slug}`}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition shadow-md"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold transition shadow-sm"
                 >
-                  Read Analysis &rarr;
+                  Read Complete Paper &rarr;
                 </Link>
-                <span className="text-xs text-slate-400">
-                  {featuredArticle.reading_time} &bull; {featuredArticle.views_count} Views
-                </span>
+                <div className="text-xs text-slate-500 font-medium">
+                  Author: <span className="text-slate-800 font-semibold">{featuredArticle.author}</span> &bull; {featuredArticle.reading_time}
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="bg-slate-900 border border-indigo-900/60 rounded-xl p-5 shadow-inner">
-                <div className="text-xs font-mono text-indigo-400 mb-2">// Network Telemetry Matrix</div>
-                <div className="space-y-3 font-mono text-xs">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-                    <span className="text-slate-400">Node Concurrency</span>
-                    <span className="text-emerald-400 font-semibold">99.99% Online</span>
+            {/* Academic Registry Metrics */}
+            <div className="lg:col-span-4">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm space-y-3">
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-900 font-bold border-b border-slate-200 pb-2">
+                  // Publication Telemetry
+                </div>
+                <div className="space-y-2.5 font-mono text-xs">
+                  <div className="flex justify-between items-center text-slate-600">
+                    <span>Peer Review Status</span>
+                    <span className="text-emerald-700 font-bold">VERIFIED</span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-                    <span className="text-slate-400">Verification Engine</span>
-                    <span className="text-cyan-400 font-semibold">Active & Syncing</span>
+                  <div className="flex justify-between items-center text-slate-600">
+                    <span>Indexation Priority</span>
+                    <span className="text-blue-900 font-bold">HIGH (1.0)</span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-2">
-                    <span className="text-slate-400">Exit Route Bandwidth</span>
-                    <span className="text-indigo-400 font-semibold">Optimized (Sub-150KB)</span>
+                  <div className="flex justify-between items-center text-slate-600">
+                    <span>Citation Factor</span>
+                    <span className="text-slate-900 font-bold">98.4%</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-400">Ad Monetization Shield</span>
-                    <span className="text-amber-400 font-semibold">Verified Safe</span>
+                  <div className="flex justify-between items-center text-slate-600">
+                    <span>Distribution Protocol</span>
+                    <span className="text-emerald-700 font-bold">OPEN ACCESS</span>
                   </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-slate-800 text-center">
-                  <Link href="/gateway" className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 underline underline-offset-4">
-                    Launch Interactive Gateway &rarr;
+                <div className="pt-3 border-t border-slate-200 text-center">
+                  <Link href="/gateway" className="text-xs font-bold text-blue-900 hover:text-blue-700 underline underline-offset-4">
+                    Explore Laboratory Sandboxes &rarr;
                   </Link>
                 </div>
               </div>
@@ -79,82 +86,36 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Grid of Articles */}
-      <section id="articles" className="space-y-6">
-        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-          <h2 className="text-xl font-bold text-white tracking-tight">Recent Editorial Analysis</h2>
-          <span className="text-xs text-slate-400">Updated in real-time</span>
-        </div>
+      {/* Interactive Directory with Search & Category Filters (Shows all 30 Articles) */}
+      <ArticleExplorer initialArticles={articles} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {standardArticles.map((article) => (
-            <article
-              key={article.id}
-              className="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-indigo-600/60 transition group flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-950/60 border border-indigo-800/40 px-2 py-0.5 rounded">
-                  {article.category}
-                </span>
-                <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition leading-snug">
-                  <Link href={`/article/${article.slug}`}>{article.title}</Link>
-                </h3>
-                <p className="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-                  {article.excerpt}
-                </p>
-              </div>
-              <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                <span>{article.reading_time}</span>
-                <Link href={`/article/${article.slug}`} className="text-indigo-400 font-medium hover:underline">
-                  Read Article &rarr;
-                </Link>
-              </div>
-            </article>
-          ))}
-
-          {/* Dynamic Gateway Promotion Card */}
-          <article className="bg-gradient-to-br from-indigo-950/80 to-slate-900 border border-indigo-700/50 rounded-xl p-5 hover:border-indigo-500 transition group flex flex-col justify-between">
-            <div className="space-y-3">
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-800/40 px-2 py-0.5 rounded">
-                Verified Access Pass
-              </span>
-              <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition leading-snug">
-                <Link href="/gateway">Digital Session Verification & Reward Gateway</Link>
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Connect your session to verified distribution nodes. Fast verification for developer sandboxes and partner benefits.
-              </p>
-            </div>
-            <div className="mt-4 pt-4 border-t border-indigo-900/80 flex items-center justify-between text-xs">
-              <span className="text-slate-400">Instant Access</span>
-              <Link href="/gateway" className="text-amber-400 font-semibold hover:underline">
-                Enter Gateway &rarr;
-              </Link>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      {/* In-Content Banner Slot */}
+      {/* In-Content Placement Slot */}
       <AdRenderer ads={ads} slot="content" />
 
-      {/* SmartLink Monetag Conversion Section */}
-      <section className="bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-8 text-center">
-        <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Claim Your Verified Digital Pass</h3>
-        <p className="text-slate-400 text-sm max-w-2xl mx-auto mb-6">
-          Authorized readers and partner platform visitors are eligible for instant access to premium analytical toolkits and developer sandboxes.
+      {/* Academic Resource Gateway Conversion Banner */}
+      <section className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-2xl p-8 sm:p-10 text-center text-white shadow-md">
+        <span className="inline-block text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-full bg-blue-800/80 border border-blue-600/40 font-bold text-blue-200 mb-3">
+          Institutional Access Pass
+        </span>
+        <h3 className="text-xl sm:text-2xl font-serif font-bold mb-3">
+          Claim Verified Academic & Laboratory Sandbox Access
+        </h3>
+        <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto mb-6 leading-relaxed">
+          Authorized researchers, software architects, and partner platform visitors are eligible for instant access to high-performance test nodes and verified software benchmark repositories.
         </p>
         <div>
           <a
             href={smartLinkUrl}
             target={smartLinkUrl.startsWith('http') ? '_blank' : '_self'}
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition cursor-pointer"
+            className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-lg transition cursor-pointer"
           >
-            Continue to Verified Resource Gateway &rarr;
+            Authenticate & Proceed to Resource Gateway &rarr;
           </a>
         </div>
-        <p className="text-[11px] text-slate-500 mt-3">SSL 256-Bit Encrypted &bull; Instant Authorization &bull; Safe Traffic Node</p>
+        <p className="text-[11px] text-slate-400 mt-4">
+          SSL 256-Bit Encrypted &bull; No Software Installation Required &bull; Certified Network Protocol
+        </p>
       </section>
 
     </div>

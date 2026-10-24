@@ -9,50 +9,58 @@ interface NavbarProps {
 export default function Navbar({ settings }: NavbarProps) {
   return (
     <>
-      {/* Top Ticker */}
-      <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border-b border-indigo-900/40 text-xs py-2 px-4">
+      {/* Top Academic Registry Header Bar */}
+      <div className="bg-slate-900 text-slate-300 text-[11px] py-1.5 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-2">
-            <span className="bg-indigo-600 text-white font-semibold uppercase px-2 py-0.5 rounded text-[10px] tracking-wider">
-              Live Intel
+          <div className="flex items-center gap-2 font-mono">
+            <span className="bg-blue-600 text-white font-bold px-1.5 py-0.2 rounded text-[9px] uppercase tracking-wider">
+              Academic Review
             </span>
-            <span className="text-slate-300">
-              Autonomous multi-agent systems reach unprecedented throughput across enterprise clusters.
-            </span>
+            <span>ISSN 2940-112X &bull; Peer-Reviewed Computer Science & Engineering Journal</span>
           </div>
           <div className="flex items-center gap-4 text-slate-400">
-            <span>Global Edition</span>
+            <span>Volume 14 &bull; Issue 4</span>
             <span className="hidden sm:inline">|</span>
-            <Link href="/gateway" className="text-indigo-400 hover:text-indigo-300 font-medium transition">
-              Launch Verified Gateway &rarr;
+            <Link href="/gateway" className="text-blue-400 hover:text-blue-300 font-medium transition">
+              Academic Resource Repository &rarr;
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Nav */}
-      <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      {/* Main Clean Institutional Header */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="hover:opacity-90 transition">
-              <Logo size="md" />
+            <Link href="/" className="hover:opacity-95 transition">
+              <Logo size="md" showTagline={true} />
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-              <Link href="/" className="hover:text-indigo-400 transition">Home</Link>
-              <Link href="/#articles" className="hover:text-indigo-400 transition">Analysis</Link>
-              <Link href="/portfolio" className="hover:text-indigo-400 transition">Portfolio</Link>
-              <Link href="/gateway" className="text-amber-400 hover:text-amber-300 font-medium transition">Reward Gateway</Link>
-              <Link href="/contact" className="hover:text-indigo-400 transition">Contact</Link>
+            <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-700">
+              <Link href="/" className="text-blue-900 hover:text-blue-700 transition">
+                Home
+              </Link>
+              <Link href="/#articles" className="hover:text-blue-900 transition">
+                Research Publications
+              </Link>
+              <Link href="/portfolio" className="hover:text-blue-900 transition">
+                Laboratory Sandboxes
+              </Link>
+              <Link href="/gateway" className="text-emerald-700 hover:text-emerald-800 font-bold transition">
+                Resource Gateway
+              </Link>
+              <Link href="/contact" className="hover:text-blue-900 transition">
+                Editorial Board
+              </Link>
             </nav>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link
               href="/gateway"
-              className="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition"
+              className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-md bg-blue-900 hover:bg-blue-800 text-white shadow-sm transition"
             >
-              Claim Access Pass
+              Access Resource Repository
             </Link>
           </div>
         </div>

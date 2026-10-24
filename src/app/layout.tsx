@@ -8,14 +8,14 @@ import AdRenderer from '@/components/AdRenderer';
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
   return {
-    title: `${settings.site_name} | ${settings.site_tagline}`,
-    description: settings.site_description,
+    title: 'ApexPulse Institute | Global Educational & Technology Review',
+    description: 'Peer-reviewed academic analysis, computer science architectures, and educational research papers on emerging technology.',
     robots: {
       index: true,
       follow: true,
     },
     verification: {
-      google: settings.google_verification_meta || undefined,
+      google: 'googleebcf575ef351a810',
     },
     other: settings.monetag_verification_meta
       ? { 'monetag': settings.monetag_verification_meta }
@@ -32,25 +32,22 @@ export default async function RootLayout({
   const ads = await getPortalAds();
 
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="scroll-smooth bg-slate-50 text-slate-900">
       <head>
-        {/* Tailwind CDN Guarantee */}
+        {/* Tailwind CDN */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               tailwind.config = {
-                darkMode: 'class',
                 theme: {
                   extend: {
                     colors: {
-                      brand: {
-                        50: '#eef2ff',
-                        100: '#e0e7ff',
-                        500: '#6366f1',
-                        600: '#4f46e5',
-                        700: '#4338ca',
-                        900: '#1e1b4b'
+                      academic: {
+                        50: '#f0fdf4',
+                        100: '#dcfce7',
+                        700: '#15803d',
+                        900: '#14532d'
                       }
                     }
                   }
@@ -59,19 +56,15 @@ export default async function RootLayout({
             `,
           }}
         />
-        {settings.custom_head_scripts && (
-          <script
-            dangerouslySetInnerHTML={{ __html: settings.custom_head_scripts }}
-          />
-        )}
+        <meta name="google-site-verification" content="googleebcf575ef351a810" />
       </head>
-      <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-indigo-600 selection:text-white">
+      <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
         {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}
         <AdRenderer ads={ads} slot="global" />
 
         <Navbar settings={settings} />
 
-        {/* Optional Header Banner Slot */}
+        {/* Header Ad Slot (728x90) */}
         <AdRenderer ads={ads} slot="header" />
 
         <main className="flex-grow w-full">
