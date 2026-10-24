@@ -4,6 +4,7 @@ import { getPortalSettings, getPortalAds } from '@/lib/portal-service';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdRenderer from '@/components/AdRenderer';
+import MonetagEngine from '@/components/MonetagEngine';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
@@ -59,6 +60,9 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
       </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
+        {/* Automated Monetag Ad Engine & Anti-Adblock Script Delivery */}
+        <MonetagEngine ads={ads} />
+
         {/* Global Ad Injection: Popunder, In-Page Push, Vignette */}
         <AdRenderer ads={ads} slot="global" />
 
