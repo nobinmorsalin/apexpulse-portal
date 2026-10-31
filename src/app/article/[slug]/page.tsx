@@ -27,19 +27,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   if (!article) return { title: 'Publication Not Found | ApexPulse Global' };
 
   const media = getArticleMedia(article.category, article.slug);
-  const articleUrl = `https://apexpulse-portal.vercel.app/article/${article.slug}`;
 
   return {
     title: `${article.title} | ApexPulse Global`,
     description: article.excerpt,
-    alternates: {
-      canonical: articleUrl,
-    },
     openGraph: {
       title: `${article.title} | ApexPulse Global`,
       description: article.excerpt,
-      url: articleUrl,
-      siteName: 'ApexPulse Global',
       type: 'article',
       publishedTime: article.created_at,
       authors: [article.author],
@@ -51,12 +45,6 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
           alt: article.title,
         },
       ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: article.title,
-      description: article.excerpt,
-      images: [media.heroImage],
     },
   };
 }
@@ -86,71 +74,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     year: 'numeric',
   });
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'TechArticle',
-    headline: article.title,
-    description: article.excerpt,
-    image: [media.heroImage, media.figure1Image, media.figure2Image],
-    datePublished: article.created_at,
-    dateModified: article.updated_at || article.created_at,
-    author: [
-      {
-        '@type': 'Person',
-        name: article.author,
-        jobTitle: media.authorRole,
-      },
-    ],
-    publisher: {
-      '@type': 'NewsMediaOrganization',
-      name: 'ApexPulse Global',
-      url: 'https://apexpulse-portal.vercel.app',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://apexpulse-portal.vercel.app/logo.svg',
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://apexpulse-portal.vercel.app/article/${article.slug}`,
-    },
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Dispatch',
-        item: 'https://apexpulse-portal.vercel.app',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: article.category,
-        item: 'https://apexpulse-portal.vercel.app',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: article.title,
-        item: `https://apexpulse-portal.vercel.app/article/${article.slug}`,
-      },
-    ],
-  };
-
   return (
     <div className="w-full min-h-screen bg-[#06080e] text-slate-100">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       
       {/* 1. ARTICLE HERO HEADER & COVERAGE */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 space-y-6">
