@@ -39,10 +39,10 @@ export default function Navbar({ settings }: NavbarProps) {
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
                 Dispatch
               </Link>
-              <Link href="/article/autonomous-ai-agents-2026-orchestration" className="hover:text-cyan-400 transition">
+              <Link href="/article/autonomous-ai-agents-enterprise-orchestration" className="hover:text-cyan-400 transition">
                 Autonomous AI
               </Link>
-              <Link href="/article/quantum-cryptography-zero-trust-networks" className="hover:text-cyan-400 transition">
+              <Link href="/article/quantum-cryptography-and-zero-trust-networks" className="hover:text-cyan-400 transition">
                 Cyber Defense
               </Link>
               <Link href="/portfolio" className="hover:text-cyan-400 transition">

@@ -14,8 +14,24 @@ export default async function HomePage() {
 
   const featuredArticle = articles.find((a) => a.is_featured) || articles[0];
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ApexPulse Global',
+    url: 'https://apexpulse-portal.vercel.app',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://apexpulse-portal.vercel.app/?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
 
       {/* 1. HERO SECTION: Split Lead Investigative Cover Story + The Live Wire */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -60,7 +76,7 @@ export default async function HomePage() {
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight group-hover:text-cyan-300 transition">
-              <Link href={featuredArticle ? `/article/${featuredArticle.slug}` : '/article/autonomous-ai-agents-2026-orchestration'}>
+              <Link href={featuredArticle ? `/article/${featuredArticle.slug}` : '/article/autonomous-ai-agents-enterprise-orchestration'}>
                 {featuredArticle?.title || 'Autonomous AI Agent Clusters Reach Industrial Parity: The End of Static Prompt Engineering'}
               </Link>
             </h1>
@@ -71,7 +87,7 @@ export default async function HomePage() {
 
             <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#171e31]">
               <Link 
-                href={featuredArticle ? `/article/${featuredArticle.slug}` : '/article/autonomous-ai-agents-2026-orchestration'} 
+                href={featuredArticle ? `/article/${featuredArticle.slug}` : '/article/autonomous-ai-agents-enterprise-orchestration'} 
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition"
               >
                 <span>Read Full Report</span>
@@ -222,7 +238,7 @@ export default async function HomePage() {
                   <span>5 min read</span>
                 </div>
                 <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition leading-snug">
-                  <Link href="/article/quantum-cryptography-zero-trust-networks">
+                  <Link href="/article/quantum-cryptography-and-zero-trust-networks">
                     Zero-Trust Architecture and Quantum Cryptography: Defending Modern Networks
                   </Link>
                 </h3>
@@ -233,7 +249,7 @@ export default async function HomePage() {
             </div>
 
             <div className="p-5 pt-0">
-              <Link href="/article/quantum-cryptography-zero-trust-networks" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition font-mono">
+              <Link href="/article/quantum-cryptography-and-zero-trust-networks" className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition font-mono">
                 <span>Read Full Breakdown</span>
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
               </Link>

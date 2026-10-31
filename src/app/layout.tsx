@@ -8,12 +8,50 @@ import MonetagEngine from '@/components/MonetagEngine';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
+  const siteUrl = 'https://apexpulse-portal.vercel.app';
+
   return {
-    title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+      template: '%s | ApexPulse Global',
+    },
     description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
+    alternates: {
+      canonical: '/',
+    },
+    openGraph: {
+      title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+      description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
+      url: siteUrl,
+      siteName: 'ApexPulse Global',
+      locale: 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/logo.svg',
+          width: 512,
+          height: 512,
+          alt: 'ApexPulse Global Vortex Emblem',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+      description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
+      images: ['/logo.svg'],
+    },
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     verification: {
       google: 'googleebcf575ef351a810',
@@ -75,6 +113,21 @@ export default async function RootLayout({
         />
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'NewsMediaOrganization',
+              name: 'ApexPulse Global',
+              url: 'https://apexpulse-portal.vercel.app',
+              logo: 'https://apexpulse-portal.vercel.app/logo.svg',
+              publishingPrinciples: 'https://apexpulse-portal.vercel.app/terms',
+              ethicsPolicy: 'https://apexpulse-portal.vercel.app/terms',
+              correctionsPolicy: 'https://apexpulse-portal.vercel.app/terms',
+            }),
+          }}
+        />
       </head>
       <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
         {/* Automated Monetag Ad Engine */}
