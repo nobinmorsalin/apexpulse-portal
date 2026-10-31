@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { getArticleBySlug, getPublishedArticles, getPortalAds, incrementArticleViews } from '@/lib/portal-service';
 import { getArticleMedia } from '@/lib/article-media';
 import AdRenderer from '@/components/AdRenderer';
+import ShareBar from '@/components/ShareBar';
 
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
@@ -528,31 +529,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
 
           {/* Social Share Box */}
-          <div className="bg-[#101524] border border-[#171e31] rounded-2xl p-5 space-y-3 shadow-xl">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">Share Technical Dispatch</h4>
-            <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-              <button 
-                type="button" 
-                onClick={() => {
-                  if (typeof navigator !== 'undefined' && navigator.clipboard) {
-                    navigator.clipboard.writeText(window.location.href);
-                    alert('Dispatch URL copied to clipboard');
-                  }
-                }}
-                className="p-2.5 rounded-xl bg-[#06080e] hover:bg-[#171e31] border border-[#232d48] text-slate-200 transition text-center cursor-pointer"
-              >
-                Copy Link
-              </button>
-              <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent('https://apexpulse-portal.vercel.app/article/' + article.slug)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-[#06080e] hover:bg-[#171e31] border border-[#232d48] text-cyan-400 transition text-center cursor-pointer"
-              >
-                Share on X
-              </a>
-            </div>
-          </div>
+          <ShareBar title={article.title} slug={article.slug} />
 
           {/* Bureau Metadata Card */}
           <div className="bg-[#101524] border border-[#171e31] rounded-2xl p-5 space-y-2 shadow-xl font-mono text-xs">
