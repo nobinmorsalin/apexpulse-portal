@@ -22,10 +22,10 @@ interface ArticlePageProps {
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
-  if (!article) return { title: 'Publication Not Found | ApexPulse Institute' };
+  if (!article) return { title: 'Publication Not Found | ApexPulse Global' };
 
   return {
-    title: `${article.title} | ApexPulse Institute`,
+    title: `${article.title} | ApexPulse Global`,
     description: article.excerpt,
     openGraph: {
       title: article.title,
@@ -55,38 +55,38 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const smartLinkUrl = smartLinkAd?.smartlink_url || '/gateway';
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8 font-sans">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-        <Link href="/" className="hover:text-blue-900 transition">Home</Link>
-        <span>&rsaquo;</span>
-        <span className="text-blue-900">{article.category}</span>
-        <span>&rsaquo;</span>
-        <span className="text-slate-400 truncate max-w-[200px]">{article.title}</span>
+      <nav className="flex items-center gap-2 text-xs font-mono text-slate-400">
+        <Link href="/" className="hover:text-cyan-400 transition">Dispatch</Link>
+        <span>/</span>
+        <span className="text-cyan-400">{article.category}</span>
+        <span>/</span>
+        <span className="text-slate-500 truncate max-w-[200px]">{article.title}</span>
       </nav>
 
       {/* Article Header Card */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 border border-blue-200 text-blue-900">
+      <div className="bg-[#101524] border border-[#171e31] rounded-2xl p-6 sm:p-10 shadow-2xl space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">
           <span>{article.category}</span>
           <span>&bull;</span>
           <span>Peer-Reviewed Publication</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tight leading-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
           {article.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-2 border-t border-slate-100">
-          <span className="font-semibold text-slate-900">{article.author}</span>
+        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400 pt-2 border-t border-[#171e31]">
+          <span className="font-semibold text-white">{article.author}</span>
           <span>&bull;</span>
           <span>{article.reading_time}</span>
           <span>&bull;</span>
-          <span>{article.views_count + 1} Readers</span>
+          <span className="text-emerald-400 font-semibold">{article.views_count + 1} Reads</span>
         </div>
 
         {/* Lead Excerpt */}
-        <p className="text-base text-slate-700 leading-relaxed font-serif italic pt-2 border-t border-slate-100">
+        <p className="text-base text-slate-300 leading-relaxed italic pt-2 border-t border-[#171e31]">
           {article.excerpt}
         </p>
       </div>
@@ -95,11 +95,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <AdRenderer ads={ads} slot="content" />
 
       {/* Main Article Body */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6 text-slate-800 text-sm sm:text-base leading-relaxed">
+      <div className="bg-[#101524] border border-[#171e31] rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6 text-slate-300 text-sm sm:text-base leading-relaxed">
         {article.content.split('\n\n').map((paragraph, idx) => {
           if (paragraph.startsWith('### ')) {
             return (
-              <h3 key={idx} className="text-xl sm:text-2xl font-serif font-bold text-slate-900 tracking-tight mt-8 mb-3 border-b border-slate-100 pb-2">
+              <h3 key={idx} className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-8 mb-3 border-b border-[#171e31] pb-2">
                 {paragraph.replace('### ', '')}
               </h3>
             );
@@ -107,9 +107,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           if (paragraph.startsWith('- ')) {
             const listItems = paragraph.split('\n').map((item) => item.replace(/^- /, ''));
             return (
-              <ul key={idx} className="space-y-2.5 my-4 list-disc list-inside bg-slate-50 border border-slate-200 p-5 rounded-xl">
+              <ul key={idx} className="space-y-2.5 my-4 list-disc list-inside bg-[#06080e] border border-[#171e31] p-5 rounded-xl font-mono text-xs sm:text-sm">
                 {listItems.map((li, lIdx) => (
-                  <li key={lIdx} className="text-xs sm:text-sm text-slate-700">
+                  <li key={lIdx} className="text-slate-300">
                     <span dangerouslySetInnerHTML={{ __html: li.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                   </li>
                 ))}
@@ -117,22 +117,22 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             );
           }
           return (
-            <p key={idx} className="text-slate-700 leading-relaxed">
+            <p key={idx} className="text-slate-300 leading-relaxed">
               {paragraph}
             </p>
           );
         })}
 
         {/* Citation Notice */}
-        <div className="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 font-mono space-y-1 bg-slate-50 p-4 rounded-lg">
-          <div className="font-bold text-slate-700">Suggested Citation Format:</div>
-          <div>{article.author}. "{article.title}." <em>ApexPulse Academic Review</em>, vol. 14, no. 4, 2026.</div>
+        <div className="mt-8 pt-6 border-t border-[#171e31] text-xs text-slate-400 font-mono space-y-1 bg-[#06080e] p-4 rounded-xl">
+          <div className="font-bold text-white">Suggested Citation Format:</div>
+          <div>{article.author}. "{article.title}." <em>ApexPulse Global Technical Review</em>, vol. 14, no. 4, 2026.</div>
         </div>
       </div>
 
       {/* Institutional Gateway Conversion Callout */}
-      <div className="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-md">
-        <h3 className="text-lg font-serif font-bold">Access the Verified Laboratory Sandbox</h3>
+      <div className="bg-gradient-to-r from-cyan-950 via-[#101524] to-blue-950 text-white rounded-2xl p-6 sm:p-8 text-center space-y-3 shadow-2xl border border-cyan-500/30">
+        <h3 className="text-lg font-bold">Access the Verified Laboratory Sandbox</h3>
         <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
           Verify peer-reviewed software code, distributed network telemetry, and synthetic browser profiles directly through our secure repository node.
         </p>
@@ -141,7 +141,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             href={smartLinkUrl}
             target={smartLinkUrl.startsWith('http') ? '_blank' : '_self'}
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-md transition"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm shadow-xl shadow-cyan-500/25 transition"
           >
             Authenticate & Access Laboratory Pass &rarr;
           </a>
@@ -150,7 +150,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       {/* Related Publications Grid */}
       <div className="space-y-4 pt-6">
-        <h3 className="text-base font-serif font-bold text-slate-900">
+        <h3 className="text-base font-bold text-white font-mono uppercase tracking-wider">
           Related Research Publications
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -158,10 +158,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <Link
               key={rel.id}
               href={`/article/${rel.slug}`}
-              className="block p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-900/40 hover:shadow-sm transition group"
+              className="block p-5 rounded-2xl bg-[#101524] border border-[#171e31] hover:border-cyan-500/40 hover:-translate-y-1 transition duration-300 group shadow-lg"
             >
-              <span className="text-[10px] font-bold text-blue-900 uppercase">{rel.category}</span>
-              <h4 className="text-xs font-serif font-bold text-slate-900 group-hover:text-blue-900 transition mt-1 line-clamp-2">
+              <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase">{rel.category}</span>
+              <h4 className="text-xs font-bold text-white group-hover:text-cyan-300 transition mt-1 line-clamp-2">
                 {rel.title}
               </h4>
             </Link>

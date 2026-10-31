@@ -9,8 +9,8 @@ import MonetagEngine from '@/components/MonetagEngine';
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
   return {
-    title: 'ApexPulse Institute | Global Educational & Technology Review',
-    description: 'Peer-reviewed academic analysis, computer science architectures, and educational research papers on emerging technology.',
+    title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+    description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
     robots: {
       index: true,
       follow: true,
@@ -18,7 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
     verification: {
       google: 'googleebcf575ef351a810',
     },
-    other: settings.monetag_verification_meta
+    icons: {
+      icon: '/logo.svg',
+    },
+    other: settings?.monetag_verification_meta
       ? { 'monetag': settings.monetag_verification_meta }
       : undefined,
   };
@@ -33,22 +36,34 @@ export default async function RootLayout({
   const ads = await getPortalAds();
 
   return (
-    <html lang="en" className="scroll-smooth bg-slate-50 text-slate-900">
+    <html lang="en" className="scroll-smooth bg-[#06080e] text-slate-100 dark">
       <head>
-        {/* Tailwind CDN */}
+        {/* Google Fonts: Plus Jakarta Sans & JetBrains Mono */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        
+        {/* Tailwind CDN Configuration for Dark Theme Extensions */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               tailwind.config = {
+                darkMode: 'class',
                 theme: {
                   extend: {
+                    fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                      mono: ['"JetBrains Mono"', 'monospace'],
+                    },
                     colors: {
-                      academic: {
-                        50: '#f0fdf4',
-                        100: '#dcfce7',
-                        700: '#15803d',
-                        900: '#14532d'
+                      noir: {
+                        950: '#06080e',
+                        900: '#0b0f19',
+                        850: '#101524',
+                        800: '#171e31',
+                        700: '#232d48',
+                        600: '#354368',
                       }
                     }
                   }
@@ -58,14 +73,14 @@ export default async function RootLayout({
           }}
         />
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col justify-between antialiased selection:bg-blue-900 selection:text-white">
-        {/* Automated Monetag Ad Engine with Frequency Capping & Cooldown Controller */}
+      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+        {/* Automated Monetag Ad Engine */}
         <MonetagEngine
           ads={ads}
-          customHeadScripts={settings.custom_head_scripts}
-          cooldownMinutes={settings.ad_cooldown_minutes || 3}
+          customHeadScripts={settings?.custom_head_scripts}
+          cooldownMinutes={settings?.ad_cooldown_minutes || 3}
         />
 
         <Navbar settings={settings} />
@@ -79,7 +94,7 @@ export default async function RootLayout({
 
         <Footer settings={settings} />
 
-        {settings.custom_footer_scripts && (
+        {settings?.custom_footer_scripts && (
           <div dangerouslySetInnerHTML={{ __html: settings.custom_footer_scripts }} />
         )}
       </body>

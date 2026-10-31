@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ApexPulse Global | Next-Gen Tech, AI Trends & Digital Intelligence</title>
-  <meta name="description" content="ApexPulse Global delivers real-time reporting on artificial intelligence, cybersecurity architectures, high-performance computing, and digital finance trends.">
+  <title>ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics</title>
+  <meta name="description" content="Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://apexpulse.top/">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Cards -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ApexPulse Global | Tech & Digital Intelligence">
-  <meta property="og:description" content="Real-time reporting on artificial intelligence, cybersecurity, and digital finance.">
+  <meta property="og:title" content="ApexPulse Global | Frontier Tech & Strategic Intelligence">
+  <meta property="og:description" content="Independent journalism on semiconductor supply chains, autonomous AI execution, and quantum-safe cryptography.">
   <meta property="og:url" content="https://apexpulse.top/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80">
   <meta property="og:site_name" content="ApexPulse Global">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,14 +29,25 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
           colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-              900: '#1e1b4b'
+            noir: {
+              950: '#06080e',
+              900: '#0b0f19',
+              850: '#101524',
+              800: '#171e31',
+              700: '#232d48',
+              600: '#354368',
+            },
+            accent: {
+              cyan: '#00f2fe',
+              blue: '#4facfe',
+              emerald: '#10b981',
+              amber: '#f59e0b',
             }
           }
         }
@@ -37,249 +55,629 @@
     }
   </script>
 
+  <style>
+    /* Custom subtle glass & borders */
+    .glass-panel {
+      background: rgba(16, 21, 36, 0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card-hover {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79, 172, 254, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 242, 254, 0.12);
+    }
+    .editorial-headline {
+      letter-spacing: -0.025em;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .live-pulse {
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    /* Horizontal ticker animation */
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-slide 42s linear infinite;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+  </style>
+
   <!-- Monetag Ad Tag Configuration -->
   <script src="monetag-config.js"></script>
-
-  <!-- Monetag Placeholder: In-Page Push or Popunder tag can also be pasted here -->
-  <!-- Example: <script src="https://alwingulla.com/88/tag.min.js" data-zone="123456" async data-cfasync="false"></script> -->
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-noir-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-r from-brand-900 via-indigo-950 to-slate-900 border-b border-indigo-900/40 text-xs py-2 px-4">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-2">
-        <span class="bg-indigo-600 text-white font-semibold uppercase px-2 py-0.5 rounded text-[10px] tracking-wider">Live Briefing</span>
-        <span class="text-slate-300">Global autonomous agent adoption reaches record peak in enterprise sectors.</span>
+  <!-- 1. Real-Time Global Market & Frontier Telemetry Bar -->
+  <aside class="bg-noir-900 border-b border-noir-800 text-[11px] font-mono py-1.5 overflow-hidden select-none">
+    <div class="ticker-track flex items-center gap-8 text-slate-400">
+      <div class="flex items-center gap-2 px-3 border-r border-noir-700/60">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 live-pulse"></span>
+        <span class="text-white font-semibold">GLOBAL TECH TICKER</span>
+        <span class="text-[9px] text-slate-400 bg-noir-800 px-1.5 py-0.5 rounded">REALTIME</span>
       </div>
-      <div class="flex items-center gap-4 text-slate-400">
-        <span>Edition: International</span>
-        <span class="hidden sm:inline">|</span>
-        <a href="gateway.html" class="text-indigo-400 hover:text-indigo-300 font-medium transition">Access Digital Gateway &rarr;</a>
+      <div class="flex items-center gap-2"><span>NASDAQ:COMP</span><span class="text-emerald-400 font-semibold">18,912.40 +1.14%</span></div>
+      <div class="flex items-center gap-2"><span>NVDA</span><span class="text-emerald-400 font-semibold">$146.80 +2.85%</span></div>
+      <div class="flex items-center gap-2"><span>TSM (2nm WAFER)</span><span class="text-emerald-400 font-semibold">$198.50 +1.92%</span></div>
+      <div class="flex items-center gap-2"><span>BTC/USD</span><span class="text-cyan-400 font-semibold">$73,140 +3.40%</span></div>
+      <div class="flex items-center gap-2"><span>ETH/USD</span><span class="text-cyan-400 font-semibold">$2,790 +1.80%</span></div>
+      <div class="flex items-center gap-2"><span>CLOUD COMPUTE INDEX</span><span class="text-emerald-400 font-semibold">99.98% OPTIMAL</span></div>
+      <div class="flex items-center gap-2"><span>ARMv9 ADOPTION</span><span class="text-emerald-400 font-semibold">+44.2% YoY</span></div>
+      <!-- Duplicate set for seamless continuous marquee loop -->
+      <div class="flex items-center gap-2 px-3 border-r border-noir-700/60">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 live-pulse"></span>
+        <span class="text-white font-semibold">GLOBAL TECH TICKER</span>
       </div>
+      <div class="flex items-center gap-2"><span>NASDAQ:COMP</span><span class="text-emerald-400 font-semibold">18,912.40 +1.14%</span></div>
+      <div class="flex items-center gap-2"><span>NVDA</span><span class="text-emerald-400 font-semibold">$146.80 +2.85%</span></div>
+      <div class="flex items-center gap-2"><span>TSM (2nm WAFER)</span><span class="text-emerald-400 font-semibold">$198.50 +1.92%</span></div>
+      <div class="flex items-center gap-2"><span>BTC/USD</span><span class="text-cyan-400 font-semibold">$73,140 +3.40%</span></div>
+      <div class="flex items-center gap-2"><span>ETH/USD</span><span class="text-cyan-400 font-semibold">$2,790 +1.80%</span></div>
     </div>
-  </div>
+  </aside>
 
-  <!-- Header Navigation -->
-  <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight text-white hover:text-indigo-400 transition">
-          <div class="w-8 h-8 rounded bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center font-black text-white text-sm">
-            AP
+  <!-- 2. High-End Editorial Masthead & Navigation -->
+  <header class="sticky top-0 z-50 bg-noir-950/85 backdrop-blur-xl border-b border-noir-800/90 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-8">
+          <a href="index.html" class="flex items-center gap-3 group">
+            <img src="assets/logo.svg" alt="ApexPulse Global Brand Emblem" class="w-10 h-10 drop-shadow-[0_0_14px_rgba(0,242,254,0.35)] group-hover:scale-105 transition" />
+            <div>
+              <div class="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+                <span>ApexPulse</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold text-lg">Global</span>
+              </div>
+              <p class="text-[10px] font-mono uppercase tracking-widest text-slate-400">Frontier Intelligence & Tech Review</p>
+            </div>
+          </a>
+
+          <!-- Primary Editorial Desks -->
+          <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-300">
+            <a href="index.html" class="text-cyan-400 flex items-center gap-1 transition">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              Dispatch
+            </a>
+            <a href="article-ai-breakthroughs.html" class="hover:text-cyan-400 transition">Autonomous AI</a>
+            <a href="article-cybersecurity-2026.html" class="hover:text-cyan-400 transition">Cyber Defense</a>
+            <a href="article-future-finance.html" class="hover:text-cyan-400 transition">Digital Finance</a>
+            <a href="gateway.html" class="hover:text-amber-400 text-amber-400/90 transition flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              Research Sandbox
+            </a>
+          </nav>
+        </div>
+
+        <!-- Header Actions: Edition, Search & Verified Gateway Button -->
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:flex flex-col text-right font-mono text-[10px] text-slate-400">
+            <span class="text-slate-300 font-medium" id="current-utc-date">Sunday, Oct 31, 2026</span>
+            <span class="text-emerald-400/90">Global Edition (Vol. IV)</span>
           </div>
-          <span>ApexPulse<span class="text-indigo-500">Global</span></span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-          <a href="index.html" class="text-white hover:text-indigo-400 transition">Home</a>
-          <a href="article-ai-breakthroughs.html" class="hover:text-indigo-400 transition">Artificial Intelligence</a>
-          <a href="article-cybersecurity-2026.html" class="hover:text-indigo-400 transition">Cybersecurity</a>
-          <a href="article-future-finance.html" class="hover:text-indigo-400 transition">Digital Finance</a>
-          <a href="gateway.html" class="text-amber-400 hover:text-amber-300 transition">Reward Gateway</a>
-        </nav>
-      </div>
+          <a href="gateway.html" data-monetag-smartlink="true" class="relative inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold shadow-lg shadow-cyan-500/25 transition-all">
+            <span>Access Whitepapers</span>
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
 
-      <div class="flex items-center gap-4">
-        <a href="gateway.html" class="inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition">
-          Verified Access
-        </a>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Layout -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+  <!-- 3. Main Editorial Body -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
 
-    <!-- Hero Featured Story -->
-    <section class="mb-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-slate-800 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950 border border-indigo-700/60 text-indigo-300">
-            <span>Special Report</span>
-            <span>&bull;</span>
-            <span>AI Systems</span>
+    <!-- HERO SECTION: Split Lead Investigative Cover Story + The Live Wire -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Lead Feature Story (8 cols) -->
+      <article class="lg:col-span-8 group relative rounded-2xl overflow-hidden glass-panel glass-card-hover">
+        <div class="relative aspect-[16/9] w-full overflow-hidden bg-noir-900">
+          <img 
+            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=85" 
+            alt="Autonomous Multi-Agent Neural Infrastructure Cluster" 
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-noir-950 via-noir-950/60 to-transparent"></div>
+          
+          <div class="absolute top-4 left-4 flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-cyan-500/90 text-slate-950 shadow-md">
+              Special Investigation
+            </span>
+            <span class="px-3 py-1 rounded-full text-[11px] font-mono text-cyan-200 bg-noir-950/80 backdrop-blur-md border border-cyan-500/30">
+              Compute &amp; Systems
+            </span>
           </div>
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Next-Gen Autonomous AI Agents: Transforming Enterprise Productivity in 2026
-          </h1>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            As autonomous orchestration frameworks replace traditional rule-based pipelines, organizations report unprecedented efficiency gains across complex development, research, and data verification workloads.
-          </p>
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="article-ai-breakthroughs.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition shadow-md">
-              Read Analysis &rarr;
-            </a>
-            <span class="text-xs text-slate-400">Published: October 2026 &bull; 6 min read</span>
+
+          <div class="absolute bottom-4 right-4 hidden sm:block text-[10px] font-mono text-slate-400 bg-noir-950/70 backdrop-blur-md px-2.5 py-1 rounded">
+            Photo: Bloomberg Intelligence / Getty
           </div>
         </div>
 
-        <div class="lg:col-span-5">
-          <div class="relative bg-slate-900 border border-indigo-900/60 rounded-xl p-5 shadow-inner">
-            <div class="text-xs font-mono text-indigo-400 mb-2">// System Metric Telemetry</div>
-            <div class="space-y-3 font-mono text-xs">
-              <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <span class="text-slate-400">Agent Concurrency</span>
-                <span class="text-emerald-400 font-semibold">99.98% Stable</span>
+        <div class="p-6 sm:p-8 space-y-4">
+          <div class="flex items-center gap-3 text-xs text-slate-400">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Sarah Jenkins" class="w-7 h-7 rounded-full object-cover ring-2 ring-cyan-500/40">
+            <div>
+              <span class="text-white font-medium">Sarah Jenkins</span>
+              <span class="text-slate-400 ml-1">&bull; Senior Frontier Infrastructure Editor</span>
+            </div>
+            <span class="text-slate-400 ml-auto font-mono text-[11px]">8 min read</span>
+          </div>
+
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight group-hover:text-cyan-300 transition">
+            <a href="article-ai-breakthroughs.html">
+              Autonomous AI Agent Clusters Reach Industrial Parity: The End of Static Prompt Engineering
+            </a>
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
+            Across semiconductor fabs, high-frequency clearing houses, and sovereign defense networks, autonomous multi-agent graphs are superseding traditional human-in-the-loop pipelines. An exclusive benchmark analysis into context compression, self-healing code synthesis, and the new hardware economics of 2026.
+          </p>
+
+          <div class="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-noir-800">
+            <a href="article-ai-breakthroughs.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300 transition">
+              <span>Read Full Report</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 live-pulse"></span>
+              <span>Updated 38m ago &bull; Zurich Bureau</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- The Live Intelligence Wire & Audio Dispatch (4 cols) -->
+      <aside class="lg:col-span-4 space-y-6">
+        
+        <!-- Live Audio Briefing Box -->
+        <div class="glass-panel rounded-2xl p-5 border border-cyan-500/20 relative overflow-hidden bg-gradient-to-br from-noir-900 via-noir-850 to-noir-900">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 live-pulse"></span>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-cyan-300 font-bold">Daily Audio Briefing</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">4m 18s</span>
+          </div>
+          <p class="text-xs text-slate-200 font-medium mb-3">
+            "TSMC 2nm yield rates, quantum resistant TLS rollouts, and the new European AI regulatory sandbox."
+          </p>
+          <div class="flex items-center gap-3">
+            <button id="audio-play-btn" onclick="toggleAudioDemo()" class="w-9 h-9 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center font-bold hover:scale-105 active:scale-95 transition shadow-lg shadow-cyan-500/30">
+              <svg id="play-icon" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="pause-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="flex-grow">
+              <div class="w-full bg-noir-800 h-1.5 rounded-full overflow-hidden">
+                <div id="audio-progress" class="w-1/3 bg-gradient-to-r from-cyan-400 to-blue-500 h-full rounded-full transition-all duration-300"></div>
               </div>
-              <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <span class="text-slate-400">Model Response Median</span>
-                <span class="text-cyan-400 font-semibold">124 ms</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <span class="text-slate-400">Verification Integrity</span>
-                <span class="text-indigo-400 font-semibold">100% Passed</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-slate-400">Network Routing Layer</span>
-                <span class="text-amber-400 font-semibold">Low Latency</span>
+              <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
+                <span id="audio-time">01:24</span>
+                <span>04:18</span>
               </div>
             </div>
-            <div class="mt-4 pt-4 border-t border-slate-800 text-center">
-              <a href="gateway.html" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 underline underline-offset-4">
-                Explore Full Benchmark Suite
+          </div>
+        </div>
+
+        <!-- The Wire: Realtime Stream -->
+        <div class="glass-panel rounded-2xl p-5 border border-noir-800 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-noir-800">
+            <div class="flex items-center gap-2">
+              <div class="w-2.5 h-2.5 rounded bg-blue-500"></div>
+              <h2 class="text-xs font-bold uppercase tracking-wider text-white">The Intelligence Wire</h2>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400">STREAM ACTIVE</span>
+          </div>
+
+          <div class="space-y-4">
+            
+            <!-- Wire Item 1 -->
+            <div class="group border-b border-noir-800/60 pb-3 last:border-0 last:pb-0">
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                <span class="text-cyan-400 font-semibold">SEMICONDUCTORS</span>
+                <span>14m ago</span>
+              </div>
+              <a href="article-ai-breakthroughs.html" class="text-xs font-semibold text-slate-200 group-hover:text-cyan-300 transition leading-snug block">
+                Nvidia Blackwell Ultra clusters achieve 99.4% linear scaling in Scandinavian testbeds.
               </a>
             </div>
+
+            <!-- Wire Item 2 -->
+            <div class="group border-b border-noir-800/60 pb-3 last:border-0 last:pb-0">
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                <span class="text-emerald-400 font-semibold">CYBERSECURITY</span>
+                <span>42m ago</span>
+              </div>
+              <a href="article-cybersecurity-2026.html" class="text-xs font-semibold text-slate-200 group-hover:text-emerald-300 transition leading-snug block">
+                NIST post-quantum cryptographic standards mandated for all Tier-1 banking backbones.
+              </a>
+            </div>
+
+            <!-- Wire Item 3 -->
+            <div class="group border-b border-noir-800/60 pb-3 last:border-0 last:pb-0">
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                <span class="text-amber-400 font-semibold">DECENTRALIZED MARKETS</span>
+                <span>1h ago</span>
+              </div>
+              <a href="article-future-finance.html" class="text-xs font-semibold text-slate-200 group-hover:text-amber-300 transition leading-snug block">
+                Cross-border atomic settlement volume surpasses legacy SWIFT rails in southeast corridors.
+              </a>
+            </div>
+
+            <!-- Wire Item 4 -->
+            <div class="group">
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                <span class="text-indigo-400 font-semibold">VERIFIED RESEARCH</span>
+                <span>2h ago</span>
+              </div>
+              <a href="gateway.html" class="text-xs font-semibold text-slate-200 group-hover:text-indigo-300 transition leading-snug block">
+                Q4 Global Data Architecture & Benchmarking Toolkit released to accredited partners.
+              </a>
+            </div>
+
           </div>
         </div>
-      </div>
+
+        <!-- Interactive Reader Sentiment Poll -->
+        <div class="glass-panel rounded-2xl p-5 border border-noir-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Reader Survey #104</span>
+            <span class="text-[10px] font-mono text-emerald-400 font-semibold">1,842 Votes</span>
+          </div>
+          <h3 class="text-xs font-bold text-white leading-snug">
+            Will autonomous software development agents replace 50%+ of junior engineering roles by 2027?
+          </h3>
+          <div class="space-y-2 pt-1 font-mono text-[11px]" id="poll-box">
+            <button onclick="votePoll(1)" class="w-full text-left p-2.5 rounded-lg bg-noir-850 hover:bg-noir-800 border border-noir-700/60 flex justify-between items-center transition group">
+              <span class="text-slate-300 group-hover:text-cyan-300">Yes, accelerating replacement</span>
+              <span class="text-cyan-400 font-semibold">74%</span>
+            </button>
+            <button onclick="votePoll(2)" class="w-full text-left p-2.5 rounded-lg bg-noir-850 hover:bg-noir-800 border border-noir-700/60 flex justify-between items-center transition group">
+              <span class="text-slate-300 group-hover:text-slate-100">No, augmenting existing teams</span>
+              <span class="text-slate-400 font-semibold">26%</span>
+            </button>
+          </div>
+          <p id="poll-feedback" class="text-[10px] text-slate-400 text-center hidden">Thank you for voting. Data synced with Q4 Engineering Index.</p>
+        </div>
+
+      </aside>
+
     </section>
 
-    <!-- Grid of Key Analysis Articles -->
-    <section class="mb-12">
-      <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-800">
-        <h2 class="text-xl font-bold text-white tracking-tight">Trending Strategic Intelligence</h2>
-        <span class="text-xs text-slate-400">Updated hourly</span>
+    <!-- EDITORIAL DEEP DIVES GRID (3-Column Curated Stories) -->
+    <section class="space-y-6">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-noir-800">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <span>Strategic Analysis &amp; In-Depth Architecture</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Comprehensive reporting curated by ApexPulse global correspondents.</p>
+        </div>
+        <span class="hidden sm:inline-block text-xs font-mono text-slate-400">UPDATED REGULARLY</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Article Card 1 -->
-        <article class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-600/60 transition group flex flex-col justify-between p-5">
-          <div class="space-y-3">
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2 py-0.5 rounded">
-              Cybersecurity
-            </span>
-            <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition leading-snug">
-              <a href="article-cybersecurity-2026.html">
-                Zero-Trust Architecture and Quantum Cryptography: Defending Modern Networks
-              </a>
-            </h3>
-            <p class="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-              Why leading infrastructure providers are transitioning from standard RSA encryption to post-quantum resistant cryptographic suites.
-            </p>
+        
+        <!-- Story Card 1: Quantum & Cybersecurity -->
+        <article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-noir-900">
+              <img 
+                src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" 
+                alt="Quantum Cryogenic Processor Architecture" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/90 text-slate-950">
+                Cyber Defense
+              </span>
+            </div>
+            
+            <div class="p-5 space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+                <span>Marcus Vance</span>
+                <span>&bull;</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition leading-snug">
+                <a href="article-cybersecurity-2026.html">
+                  Zero-Trust Architecture and Quantum Cryptography: Defending Modern Networks
+                </a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                Why global critical infrastructure is rapidly ditching traditional RSA-4096 in favor of lattice-based post-quantum cryptography to prevent "harvest now, decrypt later" adversary espionage.
+              </p>
+            </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-            <span>5 min read</span>
-            <a href="article-cybersecurity-2026.html" class="text-indigo-400 font-medium hover:underline">Read Article &rarr;</a>
+
+          <div class="p-5 pt-0">
+            <a href="article-cybersecurity-2026.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition">
+              <span>Read Full Breakdown</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </article>
 
-        <!-- Article Card 2 -->
-        <article class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-indigo-600/60 transition group flex flex-col justify-between p-5">
-          <div class="space-y-3">
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded">
-              Digital Finance
-            </span>
-            <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition leading-snug">
-              <a href="article-future-finance.html">
-                Decentralized Finance & Global Digital Payments: The 2026 Roadmap
-              </a>
-            </h3>
-            <p class="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-              An examination of cross-border payment settlement rails, algorithmic compliance, and high-frequency automated liquidity pools.
-            </p>
+        <!-- Story Card 2: Decentralized Global Finance -->
+        <article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-noir-900">
+              <img 
+                src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" 
+                alt="High Frequency Financial Market Telemetry" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/90 text-slate-950">
+                Digital Finance
+              </span>
+            </div>
+            
+            <div class="p-5 space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+                <span>Elena Rostova</span>
+                <span>&bull;</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition leading-snug">
+                <a href="article-future-finance.html">
+                  Decentralized Finance &amp; Global Digital Payments: The 2026 Settlement Protocol
+                </a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                How algorithmic settlement liquidity pools and programmable central bank digital rails are cutting cross-border transfer friction from 3 business days down to 400 milliseconds.
+              </p>
+            </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-            <span>4 min read</span>
-            <a href="article-future-finance.html" class="text-indigo-400 font-medium hover:underline">Read Article &rarr;</a>
+
+          <div class="p-5 pt-0">
+            <a href="article-future-finance.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition">
+              <span>Read Full Breakdown</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </article>
 
-        <!-- Article Card 3: Gateway Promo -->
-        <article class="bg-gradient-to-br from-indigo-950/80 to-slate-900 border border-indigo-700/50 rounded-xl overflow-hidden hover:border-indigo-500 transition group flex flex-col justify-between p-5">
-          <div class="space-y-3">
-            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-800/40 px-2 py-0.5 rounded">
-              Verified Access Portal
-            </span>
-            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition leading-snug">
-              <a href="gateway.html">
-                Digital Reward Verification & Automated Access Gateway
-              </a>
-            </h3>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              Unlock verified downloads, partner bonuses, and premium resources securely through our authenticated single sign-on redirect pathway.
-            </p>
+        <!-- Story Card 3: Enterprise Research Sandbox & Gateway (High-Converting Natural Bridge) -->
+        <article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col justify-between group border-cyan-500/30 bg-gradient-to-b from-noir-900 to-noir-850">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-noir-900">
+              <img 
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+                alt="Cloud Infrastructure & Testing Sandbox" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-85"
+                loading="lazy"
+              />
+              <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-400 text-slate-950">
+                Verified Portal
+              </span>
+              <div class="absolute bottom-3 left-3 right-3 bg-noir-950/80 backdrop-blur-md rounded-lg p-2 font-mono text-[10px] text-emerald-400 flex items-center justify-between">
+                <span>AUTH STATUS: VERIFIED</span>
+                <span class="text-cyan-300">TOKEN: #APG-882</span>
+              </div>
+            </div>
+            
+            <div class="p-5 space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+                <span>ApexPulse Labs</span>
+                <span>&bull;</span>
+                <span class="text-amber-400 font-semibold">Accredited Access</span>
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition leading-snug">
+                <a href="gateway.html">
+                  Q4 Enterprise Benchmark Sandbox &amp; Automation Resource Distribution
+                </a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                Direct access gateway to authenticated developer profiles, synthetic traffic configurations, and verified whitepaper packages for authorized readers.
+              </p>
+            </div>
           </div>
-          <div class="mt-4 pt-4 border-t border-indigo-900/80 flex items-center justify-between text-xs">
-            <span class="text-slate-400">High Priority</span>
-            <a href="gateway.html" class="text-amber-400 font-semibold hover:underline">Launch Gateway &rarr;</a>
+
+          <div class="p-5 pt-0">
+            <a href="gateway.html" data-monetag-smartlink="true" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md transition">
+              <span>Enter Verified Gateway</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
           </div>
         </article>
+
       </div>
     </section>
 
-    <!-- Monetag SmartLink Banner Section -->
-    <section class="bg-slate-900 border border-slate-800 rounded-xl p-6 sm:p-8 text-center my-8">
-      <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Claim Your Verified Digital Pass</h3>
-      <p class="text-slate-400 text-sm max-w-2xl mx-auto mb-6">
-        Authorized readers and partner platform visitors are eligible for instant access to premium analytical toolkits and developer sandboxes.
-      </p>
-      <div>
-        <a href="gateway.html" data-monetag-smartlink="true" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition cursor-pointer">
-          Continue to Verified Resource Gateway
-        </a>
+    <!-- EDITORIAL CURATED NEWSLETTER & INTELLIGENCE DESK -->
+    <section class="glass-panel rounded-2xl p-6 sm:p-10 border border-noir-800 relative overflow-hidden bg-gradient-to-r from-noir-900 via-noir-850 to-noir-900">
+      <div class="max-w-3xl mx-auto text-center space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          <span>THE MORNING FRONTIER DISPATCH</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Join 85,000+ Senior Infrastructure Engineers, Analysts &amp; Executives
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl mx-auto">
+          Delivered every Tuesday and Thursday at 06:00 UTC. Zero sponsored fluff, pure unadulterated architectural intelligence and technical breakdown.
+        </p>
+        <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+          <input 
+            type="email" 
+            placeholder="corporate.email@organization.com" 
+            required 
+            class="flex-grow px-4 py-2.5 rounded-xl bg-noir-950 border border-noir-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition"
+          />
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition">
+            Subscribe Free
+          </button>
+        </form>
+        <p id="newsletter-status" class="text-[11px] text-emerald-400 font-mono hidden">Verification dispatch transmitted. Please inspect inbox.</p>
+        <p class="text-[10px] text-slate-400">No telemetry tracking &bull; 256-Bit Cryptographic Privacy &bull; Instant One-Click Unsubscribe</p>
       </div>
-      <p class="text-[11px] text-slate-500 mt-3">SSL 256-Bit Encrypted &bull; Instant Authorization &bull; No Software Installation Required</p>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-slate-950 border-t border-slate-800 py-10 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 font-bold text-white text-base">
-            <div class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-xs font-black">AP</div>
-            <span>ApexPulse Global</span>
+  <!-- 4. World-Class Editorial Mega-Footer -->
+  <footer class="bg-noir-900 border-t border-noir-800 py-12 mt-16 text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-xs">
+        
+        <!-- Brand & Mission (2 cols) -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/logo.svg" alt="ApexPulse Global Logo" class="w-9 h-9 drop-shadow-[0_0_10px_rgba(0,242,254,0.3)]" />
+            <span class="text-base font-bold text-white tracking-tight">ApexPulse Global</span>
           </div>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Independent global research publication reporting on emerging computing architectures, automated systems, and enterprise technology.
+          <p class="text-slate-400 leading-relaxed max-w-sm">
+            ApexPulse Global is an independent research publication reporting on frontier semiconductor manufacturing, multi-agent artificial intelligence runtimes, post-quantum cybersecurity protocols, and next-generation decentralized market infrastructure.
           </p>
+          <div class="font-mono text-[11px] text-slate-400 space-y-1">
+            <p>ISSN 2984-184X (Global Digital Edition)</p>
+            <p>Bureaus: San Francisco &bull; Zurich &bull; Singapore &bull; Tokyo</p>
+          </div>
         </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Publication</h4>
-          <ul class="space-y-2 text-xs text-slate-400">
-            <li><a href="article-ai-breakthroughs.html" class="hover:text-indigo-400 transition">Artificial Intelligence</a></li>
-            <li><a href="article-cybersecurity-2026.html" class="hover:text-indigo-400 transition">Cybersecurity Systems</a></li>
-            <li><a href="article-future-finance.html" class="hover:text-indigo-400 transition">Digital Finance</a></li>
-            <li><a href="gateway.html" class="hover:text-indigo-400 transition">Access Gateway</a></li>
+
+        <!-- Editorial Desks -->
+        <div class="space-y-3">
+          <h4 class="font-mono text-[11px] uppercase tracking-wider text-white font-bold">Editorial Desks</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="article-ai-breakthroughs.html" class="hover:text-cyan-400 transition">Autonomous AI</a></li>
+            <li><a href="article-cybersecurity-2026.html" class="hover:text-cyan-400 transition">Cyber Warfare</a></li>
+            <li><a href="article-future-finance.html" class="hover:text-cyan-400 transition">Digital Currencies</a></li>
+            <li><a href="gateway.html" class="hover:text-cyan-400 transition">Cloud Sandbox</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Corporate & Compliance</h4>
-          <ul class="space-y-2 text-xs text-slate-400">
-            <li><a href="privacy.html" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
-            <li><a href="terms.html" class="hover:text-indigo-400 transition">Terms of Service</a></li>
-            <li><a href="contact.html" class="hover:text-indigo-400 transition">Editorial Inquiries</a></li>
+
+        <!-- Corporate Governance & Transparency -->
+        <div class="space-y-3">
+          <h4 class="font-mono text-[11px] uppercase tracking-wider text-white font-bold">Standards &amp; Trust</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="privacy.html" class="hover:text-cyan-400 transition">Privacy &amp; GDPR Policy</a></li>
+            <li><a href="terms.html" class="hover:text-cyan-400 transition">Terms of Service</a></li>
+            <li><a href="contact.html" class="hover:text-cyan-400 transition">Editorial Board &amp; Inquiries</a></li>
+            <li><a href="gateway.html" class="hover:text-cyan-400 transition">Distribution Gateway</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Network Disclaimer</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Content provided for informational and analytical research purposes. Partner networks and syndicated advertisements comply with standard industry privacy protocols.
+
+        <!-- Compliance & Accreditation -->
+        <div class="space-y-3">
+          <h4 class="font-mono text-[11px] uppercase tracking-wider text-white font-bold">Integrity</h4>
+          <p class="leading-relaxed text-[11px] text-slate-400">
+            Editorial content is independently peer-reviewed. Syndicated sponsor content conforms to global programmatic privacy compliance and IAB standards.
           </p>
         </div>
+
       </div>
-      <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+
+      <div class="pt-8 border-t border-noir-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400 font-mono">
         <p>&copy; 2026 ApexPulse Global Media Group. All rights reserved.</p>
         <div class="flex items-center gap-6">
-          <a href="privacy.html" class="hover:text-white transition">Privacy</a>
-          <a href="terms.html" class="hover:text-white transition">Terms</a>
-          <a href="contact.html" class="hover:text-white transition">Contact</a>
+          <a href="privacy.html" class="hover:text-slate-200 transition">Privacy</a>
+          <a href="terms.html" class="hover:text-slate-200 transition">Terms</a>
+          <a href="contact.html" class="hover:text-slate-200 transition">Contact Desk</a>
+          <a href="sitemap.xml" class="hover:text-slate-200 transition">XML Sitemap</a>
         </div>
       </div>
+
     </div>
   </footer>
+
+  <!-- Interactive Scripts (Audio Simulation, Poll, Newsletter) -->
+  <script>
+    // Live date format
+    try {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+      const el = document.getElementById('current-utc-date');
+      if (el) el.innerText = now.toLocaleDateString('en-US', options);
+    } catch(e) {}
+
+    // Audio briefing toggle demo
+    let isPlaying = false;
+    let audioTimer = null;
+    let seconds = 84; // 1:24
+    function toggleAudioDemo() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('play-icon');
+      const pauseIcon = document.getElementById('pause-icon');
+      const timeEl = document.getElementById('audio-time');
+      const progressEl = document.getElementById('audio-progress');
+
+      if (isPlaying) {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        audioTimer = setInterval(() => {
+          seconds++;
+          if (seconds >= 258) seconds = 0;
+          const mins = Math.floor(seconds / 60);
+          const secs = seconds % 60;
+          timeEl.innerText = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+          progressEl.style.width = ((seconds / 258) * 100) + '%';
+        }, 1000);
+      } else {
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        clearInterval(audioTimer);
+      }
+    }
+
+    // Interactive Poll
+    function votePoll(option) {
+      const pollBox = document.getElementById('poll-box');
+      const feedback = document.getElementById('poll-feedback');
+      if (pollBox && feedback) {
+        pollBox.innerHTML = `
+          <div class="space-y-2 p-2 bg-noir-900 rounded-lg border border-noir-700/60 font-mono text-[11px]">
+            <div>
+              <div class="flex justify-between mb-1 text-cyan-300">
+                <span>Yes, accelerating</span>
+                <span>75.2%</span>
+              </div>
+              <div class="w-full bg-noir-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-400 h-full w-[75.2%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1 text-slate-400">
+                <span>No, augmenting</span>
+                <span>24.8%</span>
+              </div>
+              <div class="w-full bg-noir-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-slate-500 h-full w-[24.8%]"></div>
+              </div>
+            </div>
+          </div>
+        `;
+        feedback.classList.remove('hidden');
+      }
+    }
+
+    // Newsletter Submission
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const status = document.getElementById('newsletter-status');
+      if (status) {
+        status.classList.remove('hidden');
+        e.target.reset();
+      }
+    }
+  </script>
 
 </body>
 </html>

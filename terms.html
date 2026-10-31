@@ -3,64 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | ApexPulse Global</title>
-  <meta name="description" content="Terms of Service governing the use of ApexPulse Global intelligence portal.">
+  <title>Terms of Service &amp; Syndication | ApexPulse Global</title>
+  <meta name="description" content="Editorial terms of service and commercial syndication terms for ApexPulse Global.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://apexpulse.top/terms.html">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
-  <!-- Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            noir: {
+              950: '#06080e',
+              900: '#0b0f19',
+              850: '#101524',
+              800: '#171e31',
+              700: '#232d48',
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-950/90 py-4">
+  <style>
+    .glass-panel {
+      background: rgba(16, 21, 36, 0.78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-noir-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <header class="border-b border-noir-800 bg-noir-950/90 py-4">
     <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 font-bold text-lg text-white">
-        <div class="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center font-black text-xs text-white">AP</div>
-        <span>ApexPulse<span class="text-indigo-500">Global</span></span>
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/logo.svg" alt="ApexPulse Global Logo" class="w-8 h-8 drop-shadow-[0_0_10px_rgba(0,242,254,0.35)]" />
+        <div class="text-sm font-bold text-white flex items-center gap-1">
+          <span>ApexPulse</span>
+          <span class="text-cyan-400 font-mono text-xs">/ Terms</span>
+        </div>
       </a>
-      <a href="index.html" class="text-xs text-indigo-400 hover:text-indigo-300">Back to Home &rarr;</a>
+      <a href="index.html" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition">&larr; Back to Dispatch</a>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
-    <div class="border-b border-slate-800 pb-6">
-      <h1 class="text-3xl font-extrabold text-white tracking-tight">Terms of Service</h1>
-      <p class="text-xs text-slate-400 mt-2">Last Updated: October 24, 2026</p>
+  <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-6 text-sm text-slate-300 leading-relaxed">
+    <div class="border-b border-noir-800 pb-6">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Terms of Service &amp; Syndication</h1>
+      <p class="text-xs font-mono text-slate-400 mt-2">Legal stipulations governing digital publications, whitepaper licensing, and automated access.</p>
     </div>
 
-    <section class="space-y-4 text-sm text-slate-300 leading-relaxed">
-      <h2 class="text-lg font-bold text-white">1. Acceptance of Terms</h2>
+    <div class="glass-panel p-6 rounded-2xl border border-noir-800 space-y-4">
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider">1. Acceptance of Terms</h2>
       <p>
-        By accessing or browsing ApexPulse Global, you agree to adhere to these Terms of Service and all applicable international laws and regulations. If you do not consent to these terms, you are prohibited from using this website.
+        By accessing ApexPulse Global's web properties, RSS feeds, or whitepaper download gateways, you agree to comply with and be bound by these Terms of Service.
       </p>
 
-      <h2 class="text-lg font-bold text-white">2. Intellectual Property Rights</h2>
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider pt-2">2. Intellectual Property &amp; Quotation</h2>
       <p>
-        All editorial articles, technical analysis papers, graphical assets, and platform design architectures published on ApexPulse Global are the proprietary intellectual property of ApexPulse Global Media Group and are protected by applicable copyright and trademark law.
+        All articles, benchmarks, and proprietary technical diagrams remain the exclusive property of ApexPulse Global Media Group. Fair use quotation is permitted provided proper attribution and a direct canonical backlink are included.
       </p>
 
-      <h2 class="text-lg font-bold text-white">3. Informational Disclaimer</h2>
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider pt-2">3. Research Disclaimer</h2>
       <p>
-        The materials on ApexPulse Global are provided on an 'as is' basis for informational, educational, and analytical purposes only. ApexPulse Global makes no warranties, expressed or implied, regarding commercial suitability, investment advice, or technological guarantees.
+        Technical analyses, benchmark figures, and macroeconomic settlement forecasts are published for informational and research purposes only. Nothing herein constitutes financial, cryptographic, or legal counsel.
       </p>
-
-      <h2 class="text-lg font-bold text-white">4. Permitted and Prohibited Conduct</h2>
-      <p>
-        Users agree not to deploy malicious automated scrapers, denial-of-service payloads, or unauthorized credential bypass tools against our services. Legitimate automated web indexers adhering to our robots.txt directive are permitted.
-      </p>
-
-      <h2 class="text-lg font-bold text-white">5. Governing Law</h2>
-      <p>
-        These terms shall be governed and interpreted in accordance with applicable international commercial standards.
-      </p>
-    </section>
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-400">
-    <p>&copy; 2026 ApexPulse Global. All rights reserved.</p>
+  <footer class="border-t border-noir-800 py-6 text-center text-xs font-mono text-slate-400">
+    <p>&copy; 2026 ApexPulse Global. Legal &amp; Commercial Terms.</p>
   </footer>
 
 </body>

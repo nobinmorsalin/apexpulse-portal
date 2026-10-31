@@ -4,85 +4,126 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact & Editorial Desk | ApexPulse Global</title>
-  <meta name="description" content="Contact the editorial board and compliance department at ApexPulse Global.">
+  <meta name="description" content="Contact the editorial board, syndication desk, and compliance department at ApexPulse Global.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://apexpulse.top/contact.html">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
-  <!-- Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            noir: {
+              950: '#06080e',
+              900: '#0b0f19',
+              850: '#101524',
+              800: '#171e31',
+              700: '#232d48',
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-950/90 py-4">
+  <style>
+    .glass-panel {
+      background: rgba(16, 21, 36, 0.78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-noir-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <header class="border-b border-noir-800 bg-noir-950/90 py-4">
     <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 font-bold text-lg text-white">
-        <div class="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center font-black text-xs text-white">AP</div>
-        <span>ApexPulse<span class="text-indigo-500">Global</span></span>
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/logo.svg" alt="ApexPulse Global Logo" class="w-8 h-8 drop-shadow-[0_0_10px_rgba(0,242,254,0.35)]" />
+        <div class="text-sm font-bold text-white flex items-center gap-1">
+          <span>ApexPulse</span>
+          <span class="text-cyan-400 font-mono text-xs">/ Editorial Desk</span>
+        </div>
       </a>
-      <a href="index.html" class="text-xs text-indigo-400 hover:text-indigo-300">Back to Home &rarr;</a>
+      <a href="index.html" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition">&larr; Back to Dispatch</a>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
-    <div class="border-b border-slate-800 pb-6">
-      <h1 class="text-3xl font-extrabold text-white tracking-tight">Contact Editorial Desk</h1>
-      <p class="text-xs text-slate-400 mt-2">Inquiries, corrections, and syndicate partnership requests</p>
+    <div class="border-b border-noir-800 pb-6">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Editorial Desk &amp; Inquiries</h1>
+      <p class="text-xs font-mono text-slate-400 mt-2">Journalistic tips, corrections, research syndication, and compliance requests.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       <div class="space-y-6 text-sm text-slate-300">
-        <div>
-          <h2 class="text-base font-bold text-white mb-1">Corporate Inquiries</h2>
-          <p class="text-xs text-slate-400">ApexPulse Global Media Group</p>
-          <p class="text-xs text-slate-400">Email: editorial@apexpulse.top</p>
-          <p class="text-xs text-slate-400">Compliance: privacy@apexpulse.top</p>
+        <div class="glass-panel p-5 rounded-xl border border-noir-800 space-y-2">
+          <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Bureaus &amp; Direct Contacts</h2>
+          <div class="text-xs space-y-1.5 font-mono text-slate-400 pt-2">
+            <p><span class="text-white">Editor-in-Chief:</span> editorial@apexpulse.top</p>
+            <p><span class="text-white">Research Syndication:</span> syndication@apexpulse.top</p>
+            <p><span class="text-white">Legal &amp; Data Rights:</span> privacy@apexpulse.top</p>
+            <p><span class="text-white">Secure Signal PGP:</span> keybase.io/apexpulse_desk</p>
+          </div>
         </div>
 
-        <div>
-          <h2 class="text-base font-bold text-white mb-1">Syndicate Partnerships</h2>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            For programmatic advertising inquiries, direct sponsorship placements, and content licensing agreements, our digital desk operates 24/7.
+        <div class="glass-panel p-5 rounded-xl border border-noir-800 space-y-2">
+          <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Physical Newsrooms</h2>
+          <p class="text-xs text-slate-400 leading-relaxed font-mono">
+            &bull; 580 Howard St, San Francisco, CA 94105, USA<br>
+            &bull; Gotthardstrasse 26, 8002 Zurich, Switzerland<br>
+            &bull; 10 Marina Boulevard, Tower 2, Singapore 018983
           </p>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs text-slate-400 space-y-2">
-          <div class="font-semibold text-white">Editorial Office Response Time</div>
-          <p>Standard inquiries are acknowledged within 24 business hours.</p>
         </div>
       </div>
 
-      <!-- Contact Form Mockup -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
-        <h3 class="text-sm font-bold text-white">Send Direct Message</h3>
-        <form onsubmit="event.preventDefault(); alert('Inquiry received. Our desk will contact you within 24 business hours.');" class="space-y-3">
+      <!-- Contact Message Form -->
+      <div class="glass-panel border border-noir-800 rounded-xl p-6 space-y-4">
+        <h3 class="text-sm font-bold text-white font-mono uppercase tracking-wider">Transmit Message to Newsroom</h3>
+        <form onsubmit="event.preventDefault(); document.getElementById('msg-sent').classList.remove('hidden'); this.reset();" class="space-y-3 font-mono text-xs">
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Full Name</label>
-            <input type="text" required placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+            <label class="block text-slate-400 mb-1">Your Full Name</label>
+            <input type="text" required placeholder="e.g. Dr. Jennifer Wu" class="w-full px-3 py-2 rounded-lg bg-noir-950 border border-noir-700 text-white focus:outline-none focus:border-cyan-400 transition">
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Corporate Email</label>
-            <input type="email" required placeholder="john@enterprise.com" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+            <label class="block text-slate-400 mb-1">Corporate or Academic Email</label>
+            <input type="email" required placeholder="j.wu@mit.edu" class="w-full px-3 py-2 rounded-lg bg-noir-950 border border-noir-700 text-white focus:outline-none focus:border-cyan-400 transition">
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Subject</label>
-            <input type="text" required placeholder="Syndication inquiry" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+            <label class="block text-slate-400 mb-1">Inquiry Category</label>
+            <select class="w-full px-3 py-2 rounded-lg bg-noir-950 border border-noir-700 text-white focus:outline-none focus:border-cyan-400 transition">
+              <option>Technical Paper Correction</option>
+              <option>Confidential Journalistic Whistleblower Tip</option>
+              <option>Research Syndication &amp; Licensing</option>
+              <option>Advertising / Programmatic Operations</option>
+            </select>
           </div>
           <div>
-            <label class="block text-xs text-slate-400 mb-1">Message</label>
-            <textarea required rows="4" placeholder="Brief outline of your inquiry..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500"></textarea>
+            <label class="block text-slate-400 mb-1">Confidential Message</label>
+            <textarea rows="4" required placeholder="Detail your transmission..." class="w-full px-3 py-2 rounded-lg bg-noir-950 border border-noir-700 text-white focus:outline-none focus:border-cyan-400 transition"></textarea>
           </div>
-          <button type="submit" class="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-md transition">
-            Submit Inquiry
+          <button type="submit" class="w-full py-2.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md transition">
+            Dispatch Transmission
           </button>
+          <p id="msg-sent" class="text-[11px] text-emerald-400 text-center hidden">Transmission logged. Editorial desk responds within 24 business hours.</p>
         </form>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-400">
-    <p>&copy; 2026 ApexPulse Global. All rights reserved.</p>
+  <footer class="border-t border-noir-800 py-6 text-center text-xs font-mono text-slate-400">
+    <p>&copy; 2026 ApexPulse Global. Editorial Governance.</p>
   </footer>
 
 </body>

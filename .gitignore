@@ -13,6 +13,9 @@
 # production
 /build
 
+# local test server
+server.js
+
 # misc
 .DS_Store
 *.pem

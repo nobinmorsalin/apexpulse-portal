@@ -31,97 +31,98 @@ export default function GatewayPage() {
   }, []);
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-16 text-center w-full">
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
+    <div className="max-w-xl mx-auto px-4 py-16 text-center w-full space-y-6">
+      <div className="bg-[#101524] border border-cyan-500/25 rounded-2xl p-6 sm:p-10 shadow-2xl space-y-6">
 
         {/* Status Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 border border-blue-200 text-blue-900">
-          <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-          <span>Institutional Verification Protocol</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/80 border border-cyan-500/40 text-cyan-300">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span>CRYPTOGRAPHIC SESSION HANDSHAKE</span>
         </div>
 
         {/* Title */}
         <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-serif font-black text-slate-900 tracking-tight">
-            Authenticating Laboratory Credentials
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Authenticating Verified Reader Session
           </h1>
-          <p className="text-slate-600 text-xs sm:text-sm">
-            Please wait while our verification cluster authenticates your connection token and prepares your destination resources.
+          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Please wait while our verification cluster authenticates your connection token and decrypts your requested research documentation.
           </p>
         </div>
 
         {/* Verification Matrix Box */}
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left font-mono text-xs space-y-2.5">
-          <div className="flex items-center justify-between text-slate-600">
-            <span>[1/3] Network Routing & SSL Handshake</span>
-            <span className="text-emerald-700 font-bold">VALIDATED</span>
+        <div className="bg-[#06080e] border border-[#171e31] rounded-xl p-4 text-left font-mono text-xs space-y-2.5">
+          <div className="flex items-center justify-between text-slate-400">
+            <span>[1/3] Origin Edge Integrity</span>
+            <span className="text-emerald-400 font-bold">VALIDATED</span>
           </div>
-          <div className="flex items-center justify-between text-slate-600">
-            <span>[2/3] Institutional Token Signature</span>
-            <span className="text-emerald-700 font-bold">CONFIRMED</span>
+          <div className="flex items-center justify-between text-slate-400">
+            <span>[2/3] Digital Signature Verification</span>
+            <span className="text-emerald-400 font-bold">CONFIRMED</span>
           </div>
-          <div className="flex items-center justify-between text-slate-600">
-            <span>[3/3] Laboratory Resource Bridge</span>
-            <span className={isUnlocked ? 'text-emerald-700 font-bold' : 'text-blue-900 font-bold animate-pulse'}>
-              {isUnlocked ? 'READY' : 'SYNCHRONIZING...'}
+          <div className="flex items-center justify-between text-slate-400">
+            <span>[3/3] Research Whitepaper Decryption</span>
+            <span className={isUnlocked ? 'text-emerald-400 font-bold' : 'text-cyan-400 font-bold animate-pulse'}>
+              {isUnlocked ? 'DECRYPTED & VERIFIED' : 'SYNCHRONIZING...'}
             </span>
           </div>
         </div>
 
         {/* Dynamic Progress Bar */}
         <div className="space-y-2">
-          <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#171e31] h-2 rounded-full overflow-hidden border border-[#232d48]">
             <div
-              className="bg-gradient-to-r from-blue-900 to-indigo-600 h-full transition-all duration-300 ease-out"
+              className="bg-gradient-to-r from-cyan-400 to-blue-500 h-full transition-all duration-300 ease-out"
               style={{ width: `${((3 - seconds) / 3) * 100}%` }}
             />
           </div>
-          <div className="flex justify-between text-[11px] text-slate-500 font-mono">
-            <span>Distribution cluster response:</span>
-            <span className={`font-bold ${isUnlocked ? 'text-emerald-700' : 'text-slate-900'}`}>
-              {isUnlocked ? 'Session Verified!' : `${seconds}s remaining`}
+          <div className="flex justify-between text-[11px] text-slate-400 font-mono">
+            <span>Connecting to distribution cluster...</span>
+            <span className={`font-bold ${isUnlocked ? 'text-emerald-400' : 'text-white'}`}>
+              {isUnlocked ? 'Authentication Complete!' : `${seconds}s remaining`}
             </span>
           </div>
         </div>
 
         {/* CTA Unlock Button (Unlocked after countdown) */}
-        {isUnlocked ? (
-          <div className="pt-2 animate-fadeIn">
+        {isUnlocked && (
+          <div className="pt-2 animate-fadeIn space-y-2">
             <a
               href={smartLinkUrl}
               target={smartLinkUrl.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-xl shadow-cyan-500/35 transition cursor-pointer"
             >
-              Click Here to Claim Access & Continue &rarr;
+              <span>Access Verified Research Package Now &rarr;</span>
             </a>
-            <p className="text-[11px] text-slate-500 mt-2">
-              Connecting directly to our authenticated partner repository node.
+            <p className="text-[11px] font-mono text-slate-400 mt-2">
+              Redirecting to accredited partner distribution node &bull; Instant Secure Access
             </p>
-          </div>
-        ) : (
-          <div className="pt-2">
-            <button
-              disabled
-              className="w-full py-3.5 rounded-xl bg-slate-100 text-slate-400 text-xs font-bold cursor-not-allowed border border-slate-200"
-            >
-              Authenticating session tokens ({seconds}s)...
-            </button>
           </div>
         )}
 
-        {/* Security Footer Info */}
-        <div className="pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
-          <p>TLS 1.3 Certified Encrypted Stream</p>
-          <p>Session ID: <span className="font-mono text-slate-700 font-semibold">APG-ACADEMIC-AUTH-OK</span></p>
+        {/* Token Footer */}
+        <div className="pt-4 border-t border-[#171e31] text-[11px] font-mono text-slate-400 space-y-1">
+          <p>Traffic encrypted using SHA-384 with P-384 ECDSA signatures.</p>
+          <p>Token ID: <span className="text-cyan-400">APG-2026-X892-ACC</span></p>
         </div>
 
       </div>
 
-      <div className="mt-8 text-center">
-        <Link href="/" className="text-xs text-blue-900 font-bold hover:underline transition">
-          &larr; Return to ApexPulse Institute Publications
-        </Link>
+      {/* Suggested Reading While Waiting */}
+      <div className="text-left bg-[#101524] border border-[#171e31] rounded-2xl p-5 shadow-xl space-y-3">
+        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">Popular Dispatches In This Bureau</h3>
+        <div className="space-y-2 font-mono text-xs">
+          <Link href="/" className="block text-slate-200 hover:text-cyan-400 transition">
+            &bull; Autonomous AI Agent Clusters Reach Industrial Parity &rarr;
+          </Link>
+          <Link href="/" className="block text-slate-200 hover:text-emerald-400 transition">
+            &bull; Zero-Trust Architecture and Quantum Cryptography &rarr;
+          </Link>
+          <Link href="/portfolio" className="block text-slate-200 hover:text-cyan-400 transition">
+            &bull; Decentralized Finance &amp; Global Digital Payments &rarr;
+          </Link>
+        </div>
       </div>
     </div>
   );

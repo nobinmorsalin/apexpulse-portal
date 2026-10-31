@@ -38,13 +38,13 @@ export default function ArticleExplorer({ initialArticles }: ArticleExplorerProp
   return (
     <div className="space-y-8" id="articles">
       {/* Search and Category Filter Controls */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-5">
+      <div className="bg-[#101524] border border-[#171e31] rounded-2xl p-6 shadow-xl space-y-5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h2 className="text-xl font-serif font-black text-slate-900 tracking-tight">
-              Peer-Reviewed Publications Directory
+            <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+              <span>Peer-Reviewed Publications Directory</span>
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-400 mt-0.5 font-mono">
               Showing {filteredArticles.length} research papers and technical whitepapers
             </p>
           </div>
@@ -53,25 +53,25 @@ export default function ArticleExplorer({ initialArticles }: ArticleExplorerProp
           <div className="w-full md:w-72">
             <input
               type="text"
-              placeholder="Search papers by keyword..."
+              placeholder="Search intelligence index..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-blue-900 font-medium transition"
+              className="w-full bg-[#06080e] border border-[#232d48] rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 font-mono transition"
             />
           </div>
         </div>
 
         {/* Category Pill Tabs */}
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100">
+        <div className="flex flex-wrap gap-2 pt-3 border-t border-[#171e31]">
           {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer font-mono ${
                 selectedCategory === cat
-                  ? 'bg-blue-900 text-white shadow-sm'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20'
+                  : 'bg-[#171e31] text-slate-300 hover:bg-[#232d48] hover:text-white'
               }`}
             >
               {cat}
@@ -82,14 +82,14 @@ export default function ArticleExplorer({ initialArticles }: ArticleExplorerProp
 
       {/* Articles Grid */}
       {filteredArticles.length === 0 ? (
-        <div className="text-center py-16 bg-white border border-slate-200 rounded-xl">
-          <p className="text-slate-500 text-sm font-medium">No publications found matching your query.</p>
+        <div className="text-center py-16 bg-[#101524] border border-[#171e31] rounded-2xl">
+          <p className="text-slate-400 text-sm font-medium">No publications found matching your query.</p>
           <button
             type="button"
             onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-            className="mt-3 text-xs text-blue-900 font-bold hover:underline"
+            className="mt-3 text-xs text-cyan-400 font-bold hover:underline font-mono"
           >
-            Reset Filters
+            Reset Search Filters
           </button>
         </div>
       ) : (
@@ -97,11 +97,11 @@ export default function ArticleExplorer({ initialArticles }: ArticleExplorerProp
           {filteredArticles.map((article) => (
             <article
               key={article.id}
-              className="bg-white border border-slate-200/90 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-blue-900/40 transition group flex flex-col justify-between"
+              className="bg-[#101524] border border-[#171e31] rounded-2xl p-6 shadow-xl hover:border-cyan-500/40 hover:-translate-y-1 transition duration-300 group flex flex-col justify-between"
             >
               <div className="space-y-3.5">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-900 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-mono">
                     {article.category}
                   </span>
                   <span className="text-[11px] font-mono text-slate-400">
@@ -109,22 +109,22 @@ export default function ArticleExplorer({ initialArticles }: ArticleExplorerProp
                   </span>
                 </div>
 
-                <h3 className="text-base font-serif font-bold text-slate-900 group-hover:text-blue-900 transition leading-snug">
+                <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition leading-snug">
                   <Link href={`/article/${article.slug}`}>{article.title}</Link>
                 </h3>
 
-                <p className="text-slate-600 text-xs line-clamp-3 leading-relaxed">
+                <p className="text-slate-300 text-xs line-clamp-3 leading-relaxed">
                   {article.excerpt}
                 </p>
               </div>
 
-              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="text-slate-500 font-medium truncate max-w-[160px]">
+              <div className="mt-5 pt-4 border-t border-[#171e31] flex items-center justify-between text-xs">
+                <span className="text-slate-400 font-mono text-[11px] truncate max-w-[160px]">
                   {article.author}
                 </span>
                 <Link
                   href={`/article/${article.slug}`}
-                  className="text-blue-900 font-bold hover:text-blue-700 hover:underline flex items-center gap-1"
+                  className="text-cyan-400 font-bold hover:text-cyan-300 flex items-center gap-1 font-mono text-[11px]"
                 >
                   Read Paper &rarr;
                 </Link>

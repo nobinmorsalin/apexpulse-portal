@@ -3,64 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | ApexPulse Global</title>
-  <meta name="description" content="Privacy Policy and data processing disclosures for ApexPulse Global.">
+  <title>Privacy Policy &amp; Data Rights | ApexPulse Global</title>
+  <meta name="description" content="GDPR, CCPA, and global privacy disclosure policy for readers of ApexPulse Global.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://apexpulse.top/privacy.html">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
-  <!-- Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            noir: {
+              950: '#06080e',
+              900: '#0b0f19',
+              850: '#101524',
+              800: '#171e31',
+              700: '#232d48',
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Header -->
-  <header class="border-b border-slate-800 bg-slate-950/90 py-4">
+  <style>
+    .glass-panel {
+      background: rgba(16, 21, 36, 0.78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-noir-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <header class="border-b border-noir-800 bg-noir-950/90 py-4">
     <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 font-bold text-lg text-white">
-        <div class="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center font-black text-xs text-white">AP</div>
-        <span>ApexPulse<span class="text-indigo-500">Global</span></span>
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/logo.svg" alt="ApexPulse Global Logo" class="w-8 h-8 drop-shadow-[0_0_10px_rgba(0,242,254,0.35)]" />
+        <div class="text-sm font-bold text-white flex items-center gap-1">
+          <span>ApexPulse</span>
+          <span class="text-cyan-400 font-mono text-xs">/ Privacy</span>
+        </div>
       </a>
-      <a href="index.html" class="text-xs text-indigo-400 hover:text-indigo-300">Back to Home &rarr;</a>
+      <a href="index.html" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition">&larr; Back to Dispatch</a>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
-    <div class="border-b border-slate-800 pb-6">
-      <h1 class="text-3xl font-extrabold text-white tracking-tight">Privacy Policy</h1>
-      <p class="text-xs text-slate-400 mt-2">Effective Date: October 24, 2026 &bull; Compliant with GDPR & CCPA</p>
+  <main class="max-w-4xl mx-auto px-4 py-12 flex-grow w-full space-y-6 text-sm text-slate-300 leading-relaxed">
+    <div class="border-b border-noir-800 pb-6">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Global Privacy &amp; Data Rights Policy</h1>
+      <p class="text-xs font-mono text-slate-400 mt-2">Effective Date: October 2026 &bull; Compliant with GDPR (EU 2016/679) &amp; CCPA/CPRA</p>
     </div>
 
-    <section class="space-y-4 text-sm text-slate-300 leading-relaxed">
-      <h2 class="text-lg font-bold text-white">1. Information Collection</h2>
+    <div class="glass-panel p-6 rounded-2xl border border-noir-800 space-y-4">
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider">1. Commitment to Reader Privacy</h2>
       <p>
-        ApexPulse Global collects standard technical telemetry when you access our portal. This data includes your anonymized IP address, browser user-agent string, operating system characteristics, referral URLs, and interaction timestamps. We do not collect personally identifiable information unless voluntarily submitted via our contact channels.
+        ApexPulse Global ("ApexPulse", "we", "our") is dedicated to upholding the highest standards of data integrity and digital privacy. As an independent research publication, we adhere to the principle of strict data minimization.
       </p>
 
-      <h2 class="text-lg font-bold text-white">2. Cookies and Third-Party Advertising Technologies</h2>
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider pt-2">2. Information Collection</h2>
       <p>
-        We partner with verified third-party advertising exchanges, including Monetag and affiliated programmatic networks, to serve contextual and interest-based promotions. These partners may utilize cookies, web beacons, and persistent tokens to measure ad performance, prevent bot fraud, and deliver relevant advertisements based on aggregated navigation trends.
+        We do not collect personally identifiable information (PII) unless you explicitly transmit an inquiry via our contact form or subscribe to our newsletter. Anonymous telemetry (such as device type, browser user agent, and aggregated geographic region) is processed solely for network load balancing and programmatic advertisement verification.
       </p>
 
-      <h2 class="text-lg font-bold text-white">3. Data Protection and User Rights</h2>
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider pt-2">3. Advertising &amp; Third-Party Partners</h2>
       <p>
-        Under applicable data privacy frameworks (including GDPR, UK GDPR, and California Privacy Rights), users have the right to request access to, rectification of, or erasure of any personal logs held. To opt out of personalized programmatic ad tracking, users may adjust their browser cookie preferences or utilize standard industry opt-out portals (such as the Network Advertising Initiative or European Digital Advertising Alliance).
+        Our digital properties integrate with verified programmatic advertising syndicates (including Monetag) to support independent journalism. These networks may utilize cookies or web beacons in compliance with standard IAB TCF 2.2 guidelines.
       </p>
 
-      <h2 class="text-lg font-bold text-white">4. External Links and Gateways</h2>
+      <h2 class="text-base font-bold text-white font-mono uppercase tracking-wider pt-2">4. Your Statutory Data Rights</h2>
       <p>
-        Our site features links to partner portals and resource gateways. We are not responsible for the privacy policies, data handling practices, or content of third-party domains. Users are encouraged to review the privacy notices of any external site they access.
+        Under GDPR and CCPA, you retain the legal right to request access, rectification, or total deletion of any telemetry or communication logs associated with your IP address. Contact our compliance desk at <span class="font-mono text-cyan-400">privacy@apexpulse.top</span>.
       </p>
-
-      <h2 class="text-lg font-bold text-white">5. Contact Information</h2>
-      <p>
-        For inquiries regarding our data processing policies, please visit our <a href="contact.html" class="text-indigo-400 underline">Contact Page</a> or email compliance@apexpulse.top.
-      </p>
-    </section>
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-400">
-    <p>&copy; 2026 ApexPulse Global. All rights reserved.</p>
+  <footer class="border-t border-noir-800 py-6 text-center text-xs font-mono text-slate-400">
+    <p>&copy; 2026 ApexPulse Global. Privacy &amp; Regulatory Governance.</p>
   </footer>
 
 </body>
