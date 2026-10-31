@@ -6,9 +6,8 @@ import { getArticleMedia } from '@/lib/article-media';
 import AdRenderer from '@/components/AdRenderer';
 import ShareBar from '@/components/ShareBar';
 
-export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
-export const revalidate = 0;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const articles = await getPublishedArticles();
