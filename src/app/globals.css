@@ -3,25 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #06080e;
+  --foreground: #f1f5f9;
 }
 
 html {
-  color-scheme: light;
+  color-scheme: dark;
   scroll-behavior: smooth;
+  background-color: #06080e;
 }
 
 body {
-  color: #0f172a !important;
-  background-color: #f8fafc !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #e2e8f0 !important;
+  background-color: #06080e !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Academic typography polish */
-h1, h2, h3, h4 {
-  color: #0f172a;
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
   letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar for sleek dark editorial */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06080e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #171e31;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #232d48;
 }

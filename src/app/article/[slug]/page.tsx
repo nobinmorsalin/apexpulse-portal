@@ -75,7 +75,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   });
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-[#06080e] text-slate-100">
       
       {/* 1. ARTICLE HERO HEADER & COVERAGE */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 space-y-6">

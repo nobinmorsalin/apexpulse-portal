@@ -63,12 +63,12 @@ export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
     const headerAd = ads.find((a) => a.ad_key === 'banner_header' && a.is_active);
     if (!headerAd) return null;
     return (
-      <div className="w-full max-w-5xl mx-auto my-4 p-2 bg-white border border-slate-200 rounded-md shadow-sm flex flex-col items-center justify-center text-xs text-slate-500 min-h-[90px]">
-        <span className="text-[10px] uppercase font-mono text-slate-400 mb-1">Institutional Sponsored Partner</span>
+      <div className="w-full max-w-5xl mx-auto my-4 p-2 bg-[#101524] border border-[#171e31] rounded-xl shadow-lg flex flex-col items-center justify-center text-xs text-slate-400 min-h-[90px]">
+        <span className="text-[10px] uppercase font-mono text-cyan-400 mb-1">Institutional Sponsored Partner</span>
         {headerAd.code_snippet ? (
           <div dangerouslySetInnerHTML={{ __html: headerAd.code_snippet }} />
         ) : (
-          <span className="text-slate-400">Sponsored Technical Placement [728x90 Leaderboard]</span>
+          <span className="text-slate-400 font-mono text-xs">Sponsored Technical Placement [728x90 Leaderboard]</span>
         )}
       </div>
     );
@@ -78,26 +78,26 @@ export default function AdRenderer({ ads, slot = 'global' }: AdRendererProps) {
     const contentAd = ads.find((a) => a.ad_key === 'banner_content' && a.is_active);
     if (!contentAd) return null;
     return (
-      <div className="w-full my-8 p-5 bg-blue-50/60 border border-blue-200/80 rounded-lg text-center shadow-sm">
-        <div className="text-[10px] uppercase font-mono tracking-wider text-blue-800 font-bold mb-2">
+      <div className="w-full my-8 p-6 bg-gradient-to-r from-[#0b0f19] to-[#101524] border border-cyan-500/30 rounded-2xl text-center shadow-xl">
+        <div className="text-[10px] uppercase font-mono tracking-wider text-cyan-400 font-bold mb-2">
           Verified Academic Research Partner
         </div>
         {contentAd.code_snippet ? (
           <div dangerouslySetInnerHTML={{ __html: contentAd.code_snippet }} />
         ) : (
           <div className="space-y-2">
-            <h4 className="text-base font-bold text-slate-900">
-              Distributed Cloud Computing & Research Sandbox
+            <h4 className="text-lg font-serif font-bold text-white">
+              Distributed Cloud Computing &amp; Research Sandbox
             </h4>
-            <p className="text-xs text-slate-600 max-w-lg mx-auto">
-              Access high-performance compute clusters and verify distributed software architectures.
+            <p className="text-xs text-slate-300 max-w-lg mx-auto font-sans leading-relaxed">
+              Access high-performance compute clusters, inspect hardware telemetry, and verify distributed software architectures.
             </p>
             <div className="pt-2">
               <a
                 href={contentAd.smartlink_url || '/gateway'}
                 target={contentAd.smartlink_url ? '_blank' : '_self'}
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold shadow-sm transition"
+                className="inline-flex items-center px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-mono font-bold shadow-md shadow-cyan-500/20 transition"
               >
                 Access Research Sandbox &rarr;
               </a>
