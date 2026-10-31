@@ -224,151 +224,169 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Rich Editorial Prose & Sections */}
           <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-[1.8] font-sans">
-            
-            {article.content.split('\n\n').map((paragraph, idx) => {
-              // Section Heading H3
-              if (paragraph.startsWith('### ')) {
-                return (
-                  <h3 key={idx} className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight mt-10 mb-4 border-b border-[#171e31] pb-2 text-balance">
-                    {paragraph.replace('### ', '')}
-                  </h3>
-                );
-              }
+            {(() => {
+              // Structured block parsing
+              const chunks = article.content.split(/\n\n+/);
+              type Block = 
+                | { type: 'heading'; text: string }
+                | { type: 'list'; items: string[] }
+                | { type: 'paragraph'; text: string };
 
-              // Bullet Lists
-              if (paragraph.startsWith('- ')) {
-                const listItems = paragraph.split('\n').map((item) => item.replace(/^- /, ''));
-                return (
-                  <ul key={idx} className="space-y-2.5 my-6 list-none bg-[#0b0f19] border border-[#171e31] p-6 rounded-2xl font-mono text-xs sm:text-sm shadow-inner">
-                    {listItems.map((li, lIdx) => (
-                      <li key={lIdx} className="text-slate-300 flex items-start gap-2.5">
-                        <span className="text-cyan-400 font-bold">&rarr;</span>
-                        <span dangerouslySetInnerHTML={{ __html: li.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
+              const blocks: Block[] = [];
+              chunks.forEach((chunk) => {
+                const lines = chunk.split('\n').map((l) => l.trim()).filter(Boolean);
+                if (!lines.length) return;
 
-              // In-Content Figure Insertion after 2nd paragraph
-              if (idx === 1) {
-                return (
-                  <div key={idx} className="space-y-6">
-                    <p className="text-slate-300 leading-[1.8] first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-white first-letter:mr-2 first-letter:float-left">
-                      {paragraph}
-                    </p>
+                if (lines[0].startsWith('#')) {
+                  const heading = lines[0].replace(/^#+\s*/, '');
+                  blocks.push({ type: 'heading', text: heading });
+                  if (lines.length > 1) {
+                    const remaining = lines.slice(1);
+                    const listItems = remaining.filter((l) => l.startsWith('- '));
+                    if (listItems.length > 0) {
+                      const intro = remaining.filter((l) => !l.startsWith('- ')).join(' ');
+                      if (intro) blocks.push({ type: 'paragraph', text: intro });
+                      blocks.push({ type: 'list', items: listItems.map((l) => l.replace(/^- /, '')) });
+                    } else {
+                      blocks.push({ type: 'paragraph', text: remaining.join(' ') });
+                    }
+                  }
+                } else {
+                  const listItems = lines.filter((l) => l.startsWith('- '));
+                  if (listItems.length > 0) {
+                    const intro = lines.filter((l) => !l.startsWith('- ')).join(' ');
+                    if (intro) blocks.push({ type: 'paragraph', text: intro });
+                    blocks.push({ type: 'list', items: listItems.map((l) => l.replace(/^- /, '')) });
+                  } else {
+                    blocks.push({ type: 'paragraph', text: lines.join(' ') });
+                  }
+                }
+              });
 
-                    {/* In-Content Figure 1.0 */}
-                    <figure className="my-8 rounded-2xl overflow-hidden bg-[#0b0f19] border border-[#171e31] shadow-2xl">
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={media.figure1Image} 
-                          alt="Technical Architecture Inspection" 
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                      <figcaption className="p-3 text-[11px] font-mono text-slate-400 flex justify-between items-center px-4 bg-[#101524]">
-                        <span>{media.figure1Caption}</span>
-                        <span className="text-slate-500">Credit: {media.figure1Credit}</span>
-                      </figcaption>
-                    </figure>
-                  </div>
-                );
-              }
+              let pCounter = 0;
 
-              // Large Editorial Pull Quote after 3rd paragraph
-              if (idx === 2) {
-                return (
-                  <div key={idx} className="space-y-6">
-                    <p className="text-slate-300 leading-[1.8]">
-                      {paragraph}
-                    </p>
+              return blocks.map((block, idx) => {
+                if (block.type === 'heading') {
+                  return (
+                    <h3 key={idx} className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight mt-10 mb-4 border-b border-[#171e31] pb-2 text-balance">
+                      {block.text}
+                    </h3>
+                  );
+                }
 
-                    {/* Editorial Pull Quote */}
-                    <blockquote className="my-8 border-l-4 border-cyan-400 pl-6 py-3 font-serif italic text-xl sm:text-2xl text-white bg-gradient-to-r from-[#101524] to-transparent rounded-r-2xl">
-                      "When you decompose monolithic systems into autonomous, verified task graphs, catastrophic hallucinations are replaced with deterministic audit trails."
-                    </blockquote>
-                  </div>
-                );
-              }
+                if (block.type === 'list') {
+                  return (
+                    <ul key={idx} className="space-y-2.5 my-6 list-none bg-[#0b0f19] border border-[#171e31] p-6 rounded-2xl font-mono text-xs sm:text-sm shadow-inner">
+                      {block.items.map((li, lIdx) => (
+                        <li key={lIdx} className="text-slate-300 flex items-start gap-2.5">
+                          <span className="text-cyan-400 font-bold">&rarr;</span>
+                          <span dangerouslySetInnerHTML={{ __html: li.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
 
-              // In-Content Figure 2.0 and Benchmark Matrix after 4th paragraph
-              if (idx === 3) {
+                // Paragraph block
+                pCounter++;
+                const currentP = pCounter;
+
                 return (
                   <div key={idx} className="space-y-6">
-                    <p className="text-slate-300 leading-[1.8]">
-                      {paragraph}
+                    <p className={`text-slate-300 leading-[1.8] ${currentP === 1 ? 'first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-cyan-400 first-letter:mr-3 first-letter:float-left' : ''}`}>
+                      {block.text}
                     </p>
 
-                    {/* Benchmark Metrics Comparison Table */}
-                    <div className="my-8 rounded-2xl overflow-hidden border border-[#171e31] bg-[#101524] shadow-2xl">
-                      <div className="p-4 bg-[#0b0f19] border-b border-[#171e31] font-mono text-xs text-white font-bold flex justify-between items-center">
-                        <span>Table 1.0: Architectural Benchmark &amp; Telemetry Matrix</span>
-                        <span className="text-cyan-400 text-[10px]">VERIFIED 2026 RUNTIME</span>
-                      </div>
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left text-xs font-mono">
-                          <thead className="bg-[#06080e] text-slate-400 border-b border-[#171e31]">
-                            <tr>
-                              <th className="p-3">Evaluation Axis</th>
-                              <th className="p-3">Legacy Monolithic Approach</th>
-                              <th className="p-3 text-cyan-400">2026 ApexPulse Benchmark</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-[#171e31]/60 text-slate-300">
-                            <tr>
-                              <td className="p-3 font-semibold text-white">Mean Verification Latency</td>
-                              <td className="p-3 text-rose-400">14.2 minutes</td>
-                              <td className="p-3 text-emerald-400 font-bold">180 milliseconds</td>
-                            </tr>
-                            <tr>
-                              <td className="p-3 font-semibold text-white">Memory Context Overhead</td>
-                              <td className="p-3 text-amber-400">O(N^2) quadratic expansion</td>
-                              <td className="p-3 text-emerald-400 font-bold">O(1) semantic compaction</td>
-                            </tr>
-                            <tr>
-                              <td className="p-3 font-semibold text-white">Fault-Tolerant Redundancy</td>
-                              <td className="p-3 text-slate-400">Manual engineer restart</td>
-                              <td className="p-3 text-emerald-400 font-bold">Self-healing DAG failover</td>
-                            </tr>
-                            <tr>
-                              <td className="p-3 font-semibold text-white">Cryptographic Traceability</td>
-                              <td className="p-3 text-rose-400">Ephemeral console stdout</td>
-                              <td className="p-3 text-emerald-400 font-bold">Immutable SHA-256 audit log</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                    {/* Figure 1.0 after 2nd paragraph */}
+                    {currentP === 2 && (
+                      <figure className="my-8 rounded-2xl overflow-hidden bg-[#0b0f19] border border-[#171e31] shadow-2xl">
+                        <div className="relative aspect-[16/10] overflow-hidden">
+                          <img 
+                            src={media.figure1Image} 
+                            alt="Technical Architecture Inspection" 
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                        <figcaption className="p-3 text-[11px] font-mono text-slate-400 flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 bg-[#101524] gap-1">
+                          <span>{media.figure1Caption}</span>
+                          <span className="text-slate-500">Credit: {media.figure1Credit}</span>
+                        </figcaption>
+                      </figure>
+                    )}
 
-                    {/* Figure 2.0 */}
-                    <figure className="my-8 rounded-2xl overflow-hidden bg-[#0b0f19] border border-[#171e31] shadow-2xl">
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={media.figure2Image} 
-                          alt="Infrastructure Telemetry Interface" 
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
+                    {/* Editorial Pull Quote after 3rd paragraph */}
+                    {currentP === 3 && (
+                      <blockquote className="my-8 border-l-4 border-cyan-400 pl-6 py-4 font-serif italic text-xl sm:text-2xl text-white bg-gradient-to-r from-[#101524] to-transparent rounded-r-2xl">
+                        "When you decompose monolithic systems into autonomous, verified task graphs, catastrophic hallucinations are replaced with deterministic audit trails."
+                      </blockquote>
+                    )}
+
+                    {/* Table 1.0 & Figure 2.0 after 4th paragraph */}
+                    {currentP === 4 && (
+                      <div className="space-y-8 my-8">
+                        {/* Benchmark Metrics Comparison Table */}
+                        <div className="rounded-2xl overflow-hidden border border-[#171e31] bg-[#101524] shadow-2xl">
+                          <div className="p-4 bg-[#0b0f19] border-b border-[#171e31] font-mono text-xs text-white font-bold flex justify-between items-center">
+                            <span>Table 1.0: Architectural Benchmark &amp; Telemetry Matrix</span>
+                            <span className="text-cyan-400 text-[10px]">VERIFIED 2026 RUNTIME</span>
+                          </div>
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs font-mono">
+                              <thead className="bg-[#06080e] text-slate-400 border-b border-[#171e31]">
+                                <tr>
+                                  <th className="p-3">Evaluation Axis</th>
+                                  <th className="p-3">Legacy Monolithic Approach</th>
+                                  <th className="p-3 text-cyan-400">2026 ApexPulse Benchmark</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-[#171e31]/60 text-slate-300">
+                                <tr>
+                                  <td className="p-3 font-semibold text-white">Mean Verification Latency</td>
+                                  <td className="p-3 text-rose-400">14.2 minutes</td>
+                                  <td className="p-3 text-emerald-400 font-bold">180 milliseconds</td>
+                                </tr>
+                                <tr>
+                                  <td className="p-3 font-semibold text-white">Memory Context Overhead</td>
+                                  <td className="p-3 text-amber-400">O(N^2) quadratic expansion</td>
+                                  <td className="p-3 text-emerald-400 font-bold">O(1) semantic compaction</td>
+                                </tr>
+                                <tr>
+                                  <td className="p-3 font-semibold text-white">Fault-Tolerant Redundancy</td>
+                                  <td className="p-3 text-slate-400">Manual engineer restart</td>
+                                  <td className="p-3 text-emerald-400 font-bold">Self-healing DAG failover</td>
+                                </tr>
+                                <tr>
+                                  <td className="p-3 font-semibold text-white">Cryptographic Traceability</td>
+                                  <td className="p-3 text-rose-400">Ephemeral console stdout</td>
+                                  <td className="p-3 text-emerald-400 font-bold">Immutable SHA-256 audit log</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        {/* Figure 2.0 */}
+                        <figure className="rounded-2xl overflow-hidden bg-[#0b0f19] border border-[#171e31] shadow-2xl">
+                          <div className="relative aspect-[16/10] overflow-hidden">
+                            <img 
+                              src={media.figure2Image} 
+                              alt="Infrastructure Telemetry Interface" 
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                          <figcaption className="p-3 text-[11px] font-mono text-slate-400 flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 bg-[#101524] gap-1">
+                            <span>{media.figure2Caption}</span>
+                            <span className="text-slate-500">Credit: {media.figure2Credit}</span>
+                          </figcaption>
+                        </figure>
                       </div>
-                      <figcaption className="p-3 text-[11px] font-mono text-slate-400 flex justify-between items-center px-4 bg-[#101524]">
-                        <span>{media.figure2Caption}</span>
-                        <span className="text-slate-500">Credit: {media.figure2Credit}</span>
-                      </figcaption>
-                    </figure>
+                    )}
                   </div>
                 );
-              }
-
-              // Standard Paragraph
-              return (
-                <p key={idx} className="text-slate-300 leading-[1.8]">
-                  {paragraph}
-                </p>
-              );
-            })}
-
+              });
+            })()}
           </div>
 
           {/* SRE & Production Deployment Checklist */}
