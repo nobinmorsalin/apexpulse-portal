@@ -38,12 +38,12 @@ export default async function RootLayout({
   return (
     <html lang="en" className="scroll-smooth bg-[#06080e] text-slate-100 dark">
       <head>
-        {/* Google Fonts: Plus Jakarta Sans & JetBrains Mono */}
+        {/* Google Fonts: Plus Jakarta Sans, Instrument Serif, Newsreader & JetBrains Mono */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         
-        {/* Tailwind CDN Configuration for Dark Theme Extensions */}
+        {/* Tailwind CDN Configuration with High-End News Portal Typography */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
           dangerouslySetInnerHTML={{
@@ -54,6 +54,7 @@ export default async function RootLayout({
                   extend: {
                     fontFamily: {
                       sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                      serif: ['"Instrument Serif"', 'Newsreader', 'Georgia', 'serif'],
                       mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
@@ -75,7 +76,7 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
         {/* Automated Monetag Ad Engine */}
         <MonetagEngine
           ads={ads}
