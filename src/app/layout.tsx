@@ -110,6 +110,9 @@ export default async function RootLayout({
         />
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+      </head>
+      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
+        {/* NewsMediaOrganization Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -125,8 +128,6 @@ export default async function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
         {/* Automated Monetag Ad Engine */}
         <MonetagEngine
           ads={ads}
