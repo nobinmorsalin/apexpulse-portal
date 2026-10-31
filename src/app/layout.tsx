@@ -12,10 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL(siteUrl),
-    title: {
-      default: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
-      template: '%s | ApexPulse Global',
-    },
+    title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
     description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
     alternates: {
       canonical: '/',
