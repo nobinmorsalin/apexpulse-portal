@@ -1,36 +1,21 @@
-'use client';
-
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import { getPortalSettings, getPortalAds } from '@/lib/portal-service';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdRenderer from '@/components/AdRenderer';
 import MonetagEngine from '@/components/MonetagEngine';
-import type { PortalSettings, PortalAd } from '@/types/portal';
 
-interface PortalShellProps {
+export default async function PortalLayout({
+  children,
+}: {
   children: React.ReactNode;
-  settings: PortalSettings;
-  ads: PortalAd[];
-}
+}) {
+  const settings = await getPortalSettings();
+  const ads = await getPortalAds();
 
-export default function PortalShell({ children, settings, ads }: PortalShellProps) {
-  const pathname = usePathname();
-  const isAdmin = pathname?.startsWith('/admin');
-
-  // If on admin route, isolate completely: NO public navbar, NO ads, NO footer, NO Monetag popup scripts
-  if (isAdmin) {
-    return (
-      <div className="w-full min-h-screen bg-[#070a13] text-slate-100 flex flex-col font-sans">
-        {children}
-      </div>
-    );
-  }
-
-  // Public portal layout with complete news navigation, ads, and editorial footer
   return (
-    <>
-      {/* Automated Monetag Ad Engine */}
+    <div className="flex flex-col min-h-screen justify-between bg-[#06080e] text-slate-100 selection:bg-cyan-500/30 font-sans">
+      {/* Automated Monetag Ad Engine (Active strictly on public portal) */}
       <MonetagEngine
         ads={ads}
         customHeadScripts={settings?.custom_head_scripts}
@@ -51,6 +36,6 @@ export default function PortalShell({ children, settings, ads }: PortalShellProp
       {settings?.custom_footer_scripts && (
         <div dangerouslySetInnerHTML={{ __html: settings.custom_footer_scripts }} />
       )}
-    </>
+    </div>
   );
 }

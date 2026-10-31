@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { getPortalSettings, getPortalAds } from '@/lib/portal-service';
-import PortalShell from '@/components/PortalShell';
+import { getPortalSettings } from '@/lib/portal-service';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
   return {
-    title: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+    metadataBase: new URL('https://apexpulse-portal.vercel.app'),
+    title: {
+      default: 'ApexPulse Global | Frontier Computing, Autonomous Systems & Global Economics',
+      template: '%s | ApexPulse Global',
+    },
     description: 'Independent global editorial covering semiconductor architectures, agentic AI frameworks, zero-trust infrastructure, and decentralized economics.',
     robots: {
       index: true,
@@ -24,14 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const settings = await getPortalSettings();
-  const ads = await getPortalAds();
-
   return (
     <html lang="en" className="scroll-smooth bg-[#06080e] text-slate-100 dark">
       <head>
@@ -40,7 +40,7 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         
-        {/* Tailwind CDN Configuration with High-End News Portal Typography */}
+        {/* Tailwind CDN Configuration */}
         <script src="https://cdn.tailwindcss.com"></script>
         <script
           dangerouslySetInnerHTML={{
@@ -73,10 +73,8 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="googleebcf575ef351a810" />
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
-      <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
-        <PortalShell settings={settings} ads={ads}>
-          {children}
-        </PortalShell>
+      <body className="bg-[#06080e] text-slate-100 min-h-screen antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
+        {children}
       </body>
     </html>
   );
