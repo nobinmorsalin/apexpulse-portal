@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { getPortalSettings, getPortalAds } from '@/lib/portal-service';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import AdRenderer from '@/components/AdRenderer';
-import MonetagEngine from '@/components/MonetagEngine';
+import PortalShell from '@/components/PortalShell';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPortalSettings();
@@ -77,27 +74,9 @@ export default async function RootLayout({
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body className="bg-[#06080e] text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
-        {/* Automated Monetag Ad Engine */}
-        <MonetagEngine
-          ads={ads}
-          customHeadScripts={settings?.custom_head_scripts}
-          cooldownMinutes={settings?.ad_cooldown_minutes || 3}
-        />
-
-        <Navbar settings={settings} />
-
-        {/* Header Ad Slot (728x90) */}
-        <AdRenderer ads={ads} slot="header" />
-
-        <main className="flex-grow w-full">
+        <PortalShell settings={settings} ads={ads}>
           {children}
-        </main>
-
-        <Footer settings={settings} />
-
-        {settings?.custom_footer_scripts && (
-          <div dangerouslySetInnerHTML={{ __html: settings.custom_footer_scripts }} />
-        )}
+        </PortalShell>
       </body>
     </html>
   );
